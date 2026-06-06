@@ -1,0 +1,196 @@
+---
+// ProductSection.astro
+import ProductCard from "./ProductCard.astro";
+
+// Product Catalog Data
+const products = [
+  {
+    title: "Detergente Líquido Ropa Activa",
+    category: "Hogar",
+    description: "Fórmula de alta eficiencia para todo tipo de ropa. Remueve manchas difíciles protegiendo los tejidos y colores de tus prendas.",
+    size: "1 Galón / 20 L",
+    colorClass: "bg-brand-blue",
+    liquidColor: "bg-blue-500",
+    invimaCode: "NSOH08234-19CO",
+    features: ["Biodegradable", "Cuidado de prendas", "Fragancia prolongada"]
+  },
+  {
+    title: "Lavavajillas Líquido Concentrado",
+    category: "Hogar",
+    description: "Arranca la grasa más pesada al instante en ollas y vajillas. Fórmula con pH balanceado que protege y suaviza tus manos.",
+    size: "Litro / Galón",
+    colorClass: "bg-brand-orange",
+    liquidColor: "bg-amber-400",
+    invimaCode: "NSOH09483-20CO",
+    features: ["Alto poder desengrasante", "Fácil enjuague", "Suave con las manos"]
+  },
+  {
+    title: "Limpiador Multiusos Desinfectante",
+    category: "Hogar",
+    description: "Limpia, aromatiza y desinfecta todo tipo de pisos y superficies en una sola pasada. Fragancia de lavanda de larga duración.",
+    size: "1 Galón / Litro",
+    colorClass: "bg-brand-red",
+    liquidColor: "bg-purple-400",
+    invimaCode: "NSOH09112-20CO",
+    features: ["Aroma a Lavanda o Pino", "Elimina 99.9% de gérmenes", "Brillo sin vetas"]
+  },
+  {
+    title: "Amonio Cuaternario 5G Concentrado",
+    category: "Desinfección",
+    description: "Desinfectante de quinta generación ideal para la sanitización de áreas comunes, clínicas y plantas de procesamiento de alimentos.",
+    size: "1 Galón / 20 L",
+    colorClass: "bg-brand-blue-dark",
+    liquidColor: "bg-cyan-500",
+    invimaCode: "NSOH09230-20CO",
+    features: ["Quinta generación", "Rendimiento industrial", "No requiere enjuague"]
+  },
+  {
+    title: "Alcohol Antiséptico al 70%",
+    category: "Desinfección",
+    description: "Alcohol antiséptico para desinfección inmediata de manos y superficies de contacto frecuente. Secado rápido sin residuos.",
+    size: "Litro / Galón",
+    colorClass: "bg-brand-blue",
+    liquidColor: "bg-sky-200",
+    invimaCode: "Reg. Invima Vigente",
+    features: ["Acción inmediata", "Grado farmacéutico", "Secado rápido"]
+  },
+  {
+    title: "Desengrasante Industrial Heavy Duty",
+    category: "Institucional",
+    description: "Fórmula de alta alcalinidad para disolver grasas, aceites y carbón en cocinas industriales, talleres y campanas extractoras.",
+    size: "1 Galón / 20 L",
+    colorClass: "bg-brand-orange",
+    liquidColor: "bg-emerald-500",
+    invimaCode: "NSOH08420-19CO",
+    features: ["Remueve grasas pesadas", "Uso institucional", "Fórmula super concentrada"]
+  },
+  {
+    title: "Jabón Líquido Antibacterial para Manos",
+    category: "Institucional",
+    description: "Limpieza profunda con agentes humectantes. Elimina microorganismos patógenos previniendo la resequedad de la piel.",
+    size: "1 Galón / Litro",
+    colorClass: "bg-brand-yellow",
+    liquidColor: "bg-pink-300",
+    invimaCode: "NSOH09612-21CO",
+    features: ["Con glicerina humectante", "Aroma suave y fresco", "Elimina bacterias"]
+  },
+  {
+    title: "Champú Autobrillante con Cera",
+    category: "Automotriz",
+    description: "Shampoo concentrado de alta espuma para lavado de vehículos. Remueve suciedad vial dejando una película brillante protectora UV.",
+    size: "1 Galón / Litro",
+    colorClass: "bg-brand-red",
+    liquidColor: "bg-yellow-400",
+    invimaCode: "NSOH08340-19CO",
+    features: ["Brillo efecto espejo", "Capa protectora UV", "Espuma densa activa"]
+  }
+];
+
+const categories = ["Todos", "Hogar", "Institucional", "Desinfección", "Automotriz"];
+---
+
+<section id="productos" class="py-24 bg-white relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+      <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-brand-yellow/20 border border-brand-yellow/30 text-brand-orange font-bold text-xs tracking-wider uppercase">
+        <span>Catálogo de Soluciones</span>
+      </div>
+      <h2 class="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-brand-blue tracking-tight leading-none">
+        Nuestra Línea de <span class="text-gradient-fire">Productos</span>
+      </h2>
+      <p class="text-slate-600 text-lg leading-relaxed">
+        Contamos con un portafolio diseñado para cubrir todas las necesidades de limpieza y desinfección, garantizando la máxima higiene en cada espacio.
+      </p>
+    </div>
+
+    <!-- Filter Buttons Grid -->
+    <div class="flex flex-wrap items-center justify-center gap-3 mb-12">
+      {categories.map((cat, idx) => (
+        <button
+          type="button"
+          class={`filter-btn px-6 py-3 rounded-full text-sm font-semibold border transition-all duration-300 ${
+            idx === 0
+              ? "bg-brand-blue text-white border-brand-blue shadow-md shadow-brand-blue/10"
+              : "bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100 hover:border-slate-300"
+          }`}
+          data-filter={cat}
+        >
+          {cat}
+        </button>
+      ))}
+    </div>
+
+    <!-- Products Grid Container -->
+    <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      {products.map((prod) => (
+        <ProductCard {...prod} />
+      ))}
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="hidden text-center py-20">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 text-slate-300 mx-auto mb-4">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.602 10.602Z" />
+      </svg>
+      <h3 class="text-slate-700 font-semibold text-lg">No se encontraron productos</h3>
+      <p class="text-slate-400 text-sm mt-1">Intenta seleccionando otra categoría.</p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  const productCards = document.querySelectorAll(".product-card") as NodeListOf<HTMLDivElement>;
+  const emptyState = document.getElementById("empty-state");
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      // 1. Update button classes
+      filterBtns.forEach((b) => {
+        b.classList.remove("bg-brand-blue", "text-white", "border-brand-blue", "shadow-md", "shadow-brand-blue/10");
+        b.classList.add("bg-slate-50", "text-slate-600", "border-slate-200", "hover:bg-slate-100");
+      });
+
+      btn.classList.remove("bg-slate-50", "text-slate-600", "border-slate-200", "hover:bg-slate-100");
+      btn.classList.add("bg-brand-blue", "text-white", "border-brand-blue", "shadow-md", "shadow-brand-blue/10");
+
+      // 2. Filter products
+      const selectedFilter = btn.getAttribute("data-filter");
+      let visibleCount = 0;
+
+      productCards.forEach((card) => {
+        const cardCategory = card.getAttribute("data-category");
+
+        if (selectedFilter === "Todos" || cardCategory === selectedFilter) {
+          card.classList.remove("hidden");
+          card.style.opacity = "0";
+          card.style.transform = "scale(0.95)";
+          // Trigger browser layout flow to process transition
+          setTimeout(() => {
+            card.style.opacity = "1";
+            card.style.transform = "scale(1)";
+          }, 50);
+          visibleCount++;
+        } else {
+          card.classList.add("hidden");
+        }
+      });
+
+      // 3. Show/hide empty state
+      if (visibleCount === 0) {
+        emptyState?.classList.remove("hidden");
+      } else {
+        emptyState?.classList.add("hidden");
+      }
+    });
+  });
+</script>
+
+<style>
+  .product-card {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+</style>

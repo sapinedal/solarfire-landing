@@ -1,0 +1,286 @@
+---
+// CleaningSimulator.astro
+---
+
+<section id="simulador" class="py-24 bg-slate-50 text-slate-800 relative overflow-hidden">
+  <!-- Decorative background elements -->
+  <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-brand-red/5 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-blue/5 rounded-full blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+      <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-brand-blue-light border border-brand-blue/15 text-brand-blue font-bold text-xs tracking-wider uppercase">
+        <span>Laboratorio Interactivo</span>
+      </div>
+      <h2 class="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-brand-blue tracking-tight leading-none">
+        Simulador de <span class="text-gradient-fire">Efectividad</span>
+      </h2>
+      <p class="text-slate-600 text-lg leading-relaxed font-light">
+        Elige una superficie y desliza el controlador para ver el poder de limpieza de Solar Fire en acción con imágenes reales de prueba.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Interactive Slider Panel (7 cols) -->
+      <div class="lg:col-span-7 space-y-6">
+        <!-- Surface Selectors -->
+        <div class="flex items-center justify-center lg:justify-start gap-4 mb-4">
+          <button 
+            type="button" 
+            class="surface-btn px-5 py-3 rounded-2xl border text-sm font-bold transition-all duration-300 bg-brand-blue border-brand-blue text-white shadow-md shadow-brand-blue/10" 
+            data-surface="cocina"
+          >
+            Cocina / Grasa
+          </button>
+          <button 
+            type="button" 
+            class="surface-btn px-5 py-3 rounded-2xl border text-sm font-bold transition-all duration-300 bg-white border-slate-200 text-slate-600 hover:bg-slate-100/50" 
+            data-surface="piso"
+          >
+            Pisos de Baldosa
+          </button>
+          <button 
+            type="button" 
+            class="surface-btn px-5 py-3 rounded-2xl border text-sm font-bold transition-all duration-300 bg-white border-slate-200 text-slate-600 hover:bg-slate-100/50" 
+            data-surface="vidrio"
+          >
+            Vidrios / Cristales
+          </button>
+        </div>
+
+        <!-- Before & After Slider Container -->
+        <div class="relative w-full aspect-video rounded-3xl overflow-hidden border border-slate-200 shadow-xl bg-slate-100 select-none">
+          
+          <!-- BEFORE STATE (DIRTY BACKGROUND) -->
+          <div id="before-layer" class="absolute inset-0 bg-cover bg-center transition-all duration-300" style="background-image: url('https://placehold.co/800x450/451a03/ffffff?text=Cocina+Sucia+(Grasa)');">
+            <!-- Dirty overlay label -->
+            <div class="absolute inset-x-0 bottom-4 flex justify-center z-10">
+              <span class="px-3 py-1 bg-brand-red/90 text-white text-[10px] font-bold rounded-full uppercase tracking-wider shadow">Antes</span>
+            </div>
+          </div>
+
+          <!-- AFTER STATE (CLEAN REVEAL LAYER) -->
+          <div id="after-layer" class="absolute inset-y-0 left-0 w-1/2 overflow-hidden border-r-2 border-brand-yellow transition-all duration-75 z-10">
+            <!-- Full size content inside to prevent squishing -->
+            <div id="after-layer-img" class="absolute inset-0 bg-cover bg-center min-w-[700px] transition-all duration-300" style="background-image: url('https://placehold.co/800x450/e0f2fe/0369a1?text=Cocina+Impecable');">
+              <div class="absolute inset-0 bg-sky-900/5 flex flex-col justify-center items-center text-center p-6">
+                <!-- Sparkle overlays -->
+                <div class="absolute top-10 left-[40%] w-4 h-4 bg-brand-yellow rounded-full animate-ping pointer-events-none"></div>
+                <div class="absolute bottom-12 left-[20%] w-3 h-3 bg-white rounded-full animate-pulse pointer-events-none"></div>
+              </div>
+              <div class="absolute inset-x-0 bottom-4 flex justify-center">
+                <span class="px-3 py-1 bg-brand-blue text-white text-[10px] font-bold rounded-full uppercase tracking-wider shadow">Después (Brillo Solar Fire)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slider Input range overlay -->
+          <input 
+            type="range" 
+            min="0" 
+            max="100" 
+            value="50" 
+            id="reveal-slider" 
+            class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20"
+            aria-label="Deslizar antes y después"
+          />
+
+          <!-- Slider bar handle representation -->
+          <div id="slider-handle" class="absolute top-0 bottom-0 left-1/2 -ml-3 w-6 pointer-events-none z-15 flex items-center justify-center">
+            <div class="w-1 h-full bg-brand-yellow"></div>
+            <div class="absolute w-10 h-10 rounded-full bg-brand-yellow text-brand-blue shadow-lg border-2 border-white flex items-center justify-center animate-pulse">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3.5" stroke="currentColor" class="w-4 h-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15 12 18.75 15.75 15m0-6L12 5.25 8.25 9" />
+              </svg>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Recommendation Panel (5 cols) -->
+      <div class="lg:col-span-5 space-y-6">
+        <div class="bg-white rounded-3xl p-8 border border-slate-100 shadow-xl space-y-6">
+          <h3 class="font-display font-bold text-2xl text-brand-blue">
+            Fórmula Recomendada
+          </h3>
+          <p class="text-slate-600 text-sm leading-relaxed" id="rec-intro">
+            Para la limpieza y remoción de grasa en mesones, estufas y campanas extractoras, te recomendamos nuestro desengrasante estrella:
+          </p>
+
+          <!-- Recommendation Card -->
+          <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200/60 flex items-center space-x-4 transition-all duration-300" id="rec-card">
+            <!-- Product Mini Icon (Placeholder) -->
+            <img 
+              id="rec-img" 
+              src="https://placehold.co/100x100/eff6ff/1e3a8a?text=DH" 
+              class="w-16 h-16 rounded-xl object-cover border border-slate-200/80 shadow-xs bg-slate-100" 
+              alt="Producto recomendado" 
+            />
+            <div class="space-y-1">
+              <span class="text-[9px] font-bold text-brand-orange uppercase tracking-widest" id="rec-category">Línea Institucional / Cocina</span>
+              <h4 class="font-display font-bold text-lg text-slate-800" id="rec-title">Desengrasante Heavy Duty</h4>
+              <p class="text-xs text-slate-500" id="rec-size">Presentación: Galón & Litro</p>
+            </div>
+          </div>
+
+          <!-- Product stats -->
+          <div class="grid grid-cols-2 gap-4 text-xs">
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+              <span class="block text-slate-500 font-semibold mb-1">Rendimiento</span>
+              <span class="text-brand-orange font-bold text-sm" id="rec-perf">Dilución 1:10 en agua</span>
+            </div>
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-100">
+              <span class="block text-slate-500 font-semibold mb-1">Concepto INVIMA</span>
+              <span class="text-brand-blue font-bold text-xs" id="rec-invima">Certificado Vigente</span>
+            </div>
+          </div>
+
+          <a 
+            id="rec-whatsapp-link"
+            href="https://wa.me/573023716599?text=Hola%20Solar%20Fire,%20quiero%20cotizar%20el%20Desengrasante%20Heavy%20Duty%20recomendado%20por%20el%20simulador."
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full inline-flex items-center justify-center px-6 py-3.5 rounded-xl text-white font-bold bg-brand-blue hover:bg-brand-blue-dark transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+          >
+            Cotizar Producto Recomendado
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  // Slider control logic
+  const slider = document.getElementById("reveal-slider") as HTMLInputElement;
+  const afterLayer = document.getElementById("after-layer") as HTMLDivElement;
+  const sliderHandle = document.getElementById("slider-handle") as HTMLDivElement;
+
+  slider?.addEventListener("input", (e) => {
+    const val = (e.target as HTMLInputElement).value;
+    if (afterLayer) afterLayer.style.width = `${val}%`;
+    if (sliderHandle) sliderHandle.style.left = `${val}%`;
+  });
+
+  // Surface and Recommendation updates
+  const surfaceBtns = document.querySelectorAll(".surface-btn");
+  const beforeLayer = document.getElementById("before-layer") as HTMLDivElement;
+  const afterLayerImg = document.getElementById("after-layer-img") as HTMLDivElement;
+  const recImg = document.getElementById("rec-img") as HTMLImageElement;
+  
+  // Custom stains and content updates
+  const recIntro = document.getElementById("rec-intro");
+  const recTitle = document.getElementById("rec-title");
+  const recCategory = document.getElementById("rec-category");
+  const recSize = document.getElementById("rec-size");
+  const recPerf = document.getElementById("rec-perf");
+  const recInvima = document.getElementById("rec-invima");
+  const recWhatsapp = document.getElementById("rec-whatsapp-link") as HTMLAnchorElement;
+
+  // Stains configuration per surface
+  const surfaceConfigs = {
+    cocina: {
+      intro: "Para la limpieza y remoción de grasa en mesones, estufas y campanas extractoras, te recomendamos nuestro desengrasante estrella:",
+      title: "Desengrasante Heavy Duty",
+      category: "Línea Institucional / Cocina",
+      size: "Presentación: Litro, Galón & 20L",
+      perf: "Dilución 1:10 en agua",
+      invima: "NSOH08420-19CO",
+      beforeImg: "https://placehold.co/800x450/451a03/ffffff?text=Cocina+Sucia+(Grasa)",
+      afterImg: "https://placehold.co/800x450/e0f2fe/0369a1?text=Cocina+Impecable",
+      btnText: "SF"
+    },
+    piso: {
+      intro: "Para la desinfección profunda de juntas, baldosas y áreas comunes de alto tráfico con fragancia duradera:",
+      title: "Limpiador Multiusos Desinfectante",
+      category: "Línea Hogar / Pisos",
+      size: "Presentación: Galón & Litro",
+      perf: "Dilución 1:20 en agua",
+      invima: "NSOH09112-20CO",
+      beforeImg: "https://placehold.co/800x450/1c1917/ffffff?text=Baldosa+Sucia+y+Manchada",
+      afterImg: "https://placehold.co/800x450/ecfeff/0891b2?text=Baldosa+Brillante+y+Limpia",
+      btnText: "LM"
+    },
+    vidrio: {
+      intro: "Para remover suciedad, huellas y grasa en ventanas y espejos, aportando una película anti-empañante:",
+      title: "Limpiavidrios Anti-empañante",
+      category: "Línea Hogar & Oficina",
+      size: "Presentación: Litro & Galón",
+      perf: "Uso Directo (Listo para usar)",
+      invima: "Registro INVIMA Vigente",
+      beforeImg: "https://placehold.co/800x450/292524/ffffff?text=Vidrio+Opaco+y+Sucio",
+      afterImg: "https://placehold.co/800x450/f0fdf4/16a34a?text=Vidrio+Brillante+como+Nuevo",
+      btnText: "LV"
+    }
+  };
+
+  surfaceBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      // 1. Style buttons
+      surfaceBtns.forEach((b) => {
+        b.className = "surface-btn px-5 py-3 rounded-2xl border text-sm font-bold transition-all duration-300 bg-white border-slate-200 text-slate-600 hover:bg-slate-100/50";
+      });
+      btn.className = "surface-btn px-5 py-3 rounded-2xl border text-sm font-bold transition-all duration-300 bg-brand-blue border-brand-blue text-white shadow-md shadow-brand-blue/10";
+
+      // 2. Update simulator textures
+      const type = btn.getAttribute("data-surface") as "cocina" | "piso" | "vidrio";
+      const config = surfaceConfigs[type];
+
+      if (config) {
+        if (beforeLayer) beforeLayer.style.backgroundImage = `url('${config.beforeImg}')`;
+        if (afterLayerImg) afterLayerImg.style.backgroundImage = `url('${config.afterImg}')`;
+        if (recImg) recImg.src = `https://placehold.co/100x100/eff6ff/1e3a8a?text=${config.btnText}`;
+      }
+
+      // Reset slider value to center on switch
+      if (slider && afterLayer && sliderHandle) {
+        slider.value = "50";
+        afterLayer.style.width = "50%";
+        sliderHandle.style.left = "50%";
+      }
+
+      // 3. Update recommendation copywriting
+      if (config) {
+        if (recIntro) recIntro.textContent = config.intro;
+        if (recTitle) recTitle.textContent = config.title;
+        if (recCategory) recCategory.textContent = config.category;
+        if (recSize) recSize.textContent = config.size;
+        if (recPerf) recPerf.textContent = config.perf;
+        if (recInvima) recInvima.textContent = config.invima;
+        if (recWhatsapp) {
+          recWhatsapp.href = `https://wa.me/573023716599?text=Hola%20Solar%20Fire,%20quiero%20cotizar%20el%20producto%20${encodeURIComponent(config.title)}%20recomendado%20por%20el%20simulador.`;
+          recWhatsapp.textContent = `Cotizar ${config.title}`;
+        }
+      }
+    });
+  });
+</script>
+
+<style>
+  /* Custom slider styling overlay inputs */
+  #reveal-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+  }
+  
+  #reveal-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 100%;
+    width: 40px;
+    background: transparent;
+    cursor: ew-resize;
+  }
+
+  #reveal-slider::-moz-range-thumb {
+    height: 100%;
+    width: 40px;
+    background: transparent;
+    cursor: ew-resize;
+    border: none;
+  }
+</style>

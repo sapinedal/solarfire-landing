@@ -1,0 +1,83 @@
+---
+// Navbar.astro
+import logoImage from '../assets/logo-solar-fire.png';
+---
+
+<header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-5">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="flex items-center justify-between glassmorphism rounded-2xl px-6 py-4 shadow-sm border border-white/25">
+      <!-- Logo -->
+      <a href="#inicio" class="flex items-center group">
+        <img src={logoImage.src} alt="Solar Fire" class="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="#inicio" class="font-medium text-slate-700 hover:text-brand-blue transition-colors duration-200">Inicio</a>
+        <a href="#nosotros" class="font-medium text-slate-700 hover:text-brand-blue transition-colors duration-200">Nosotros</a>
+        <a href="#productos" class="font-medium text-slate-700 hover:text-brand-blue transition-colors duration-200">Productos</a>
+        <a href="#simulador" class="font-medium text-slate-700 hover:text-brand-blue transition-colors duration-200">Simulador</a>
+        <a href="#contacto" class="font-medium text-slate-700 hover:text-brand-blue transition-colors duration-200">Contacto</a>
+      </div>
+
+      <!-- Call to action button -->
+      <div class="hidden md:block">
+        <a href="#contacto" class="inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-white font-medium bg-brand-blue hover:bg-brand-blue-dark transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5">
+          Cotizar Ahora
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-700 hover:bg-white/50 focus:outline-none transition-colors" aria-label="Abrir menú">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Mobile Menu Panel -->
+  <div id="mobile-menu" class="hidden md:hidden absolute top-24 left-4 right-4 z-40 glassmorphism rounded-2xl shadow-xl border border-white/35 p-6 animate-fade-in-up">
+    <div class="flex flex-col space-y-4">
+      <a href="#inicio" class="mobile-link font-semibold text-lg text-slate-800 hover:text-brand-blue px-3 py-2 rounded-lg hover:bg-white/40 transition-all">Inicio</a>
+      <a href="#nosotros" class="mobile-link font-semibold text-lg text-slate-800 hover:text-brand-blue px-3 py-2 rounded-lg hover:bg-white/40 transition-all">Nosotros</a>
+      <a href="#productos" class="mobile-link font-semibold text-lg text-slate-800 hover:text-brand-blue px-3 py-2 rounded-lg hover:bg-white/40 transition-all">Productos</a>
+      <a href="#simulador" class="mobile-link font-semibold text-lg text-slate-800 hover:text-brand-blue px-3 py-2 rounded-lg hover:bg-white/40 transition-all">Simulador</a>
+      <a href="#contacto" class="mobile-link font-semibold text-lg text-slate-800 hover:text-brand-blue px-3 py-2 rounded-lg hover:bg-white/40 transition-all">Contacto</a>
+      <a href="#contacto" class="mobile-link inline-flex items-center justify-center w-full px-5 py-3 rounded-xl text-white font-medium bg-brand-blue hover:bg-brand-blue-dark transition-all duration-300 shadow-md">
+        Cotizar Ahora
+      </a>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Dynamic header updates on scroll
+  const header = document.getElementById("main-header");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 20) {
+      header?.classList.remove("py-5");
+      header?.classList.add("py-2");
+    } else {
+      header?.classList.remove("py-2");
+      header?.classList.add("py-5");
+    }
+  });
+
+  // Mobile menu toggle
+  const menuBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const mobileLinks = document.querySelectorAll(".mobile-link");
+
+  const toggleMenu = () => {
+    mobileMenu?.classList.toggle("hidden");
+  };
+
+  menuBtn?.addEventListener("click", toggleMenu);
+
+  mobileLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      mobileMenu?.classList.add("hidden");
+    });
+  });
+</script>

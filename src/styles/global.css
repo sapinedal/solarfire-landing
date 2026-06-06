@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@theme {
+  /* Solar Fire Brand Colors */
+  --color-brand-red: rgb(224, 8, 25);
+  --color-brand-orange: rgb(230, 80, 29);
+  --color-brand-blue: rgb(36, 56, 128);
+  --color-brand-yellow: rgb(255, 236, 0);
+
+  /* Secondary & Neutral Tones */
+  --color-brand-blue-dark: rgb(18, 28, 64);
+  --color-brand-blue-light: rgb(240, 244, 255);
+  
+  /* Typography */
+  --font-display: "Outfit", system-ui, -apple-system, sans-serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Custom Animations */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-shine: shine 3s ease-in-out infinite;
+  --animate-fade-in-up: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom Base Styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: var(--font-sans);
+    background-color: #fcfdfe;
+    color: #1a202c;
+  }
+  
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(36, 56, 128);
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(230, 80, 29);
+  }
+}
+
+/* Custom Utility Classes for Premium Aesthetics */
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glassmorphism-dark {
+  background: rgba(18, 28, 64, 0.8);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.text-gradient-fire {
+  background: linear-gradient(135deg, rgb(224, 8, 25) 0%, rgb(230, 80, 29) 50%, rgb(255, 236, 0) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-blue {
+  background: linear-gradient(135deg, rgb(36, 56, 128) 0%, rgb(18, 28, 64) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
