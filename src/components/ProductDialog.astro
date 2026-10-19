@@ -2,7 +2,7 @@
 // ProductDialog.astro — ficha completa del producto en un <dialog> nativo
 import { Image } from "astro:assets";
 import type { Product } from "../data/products";
-import { whatsappLink } from "../data/products";
+import { whatsappLink, productQuoteMessage } from "../data/products";
 
 interface Props {
   product: Product;
@@ -122,7 +122,7 @@ const check = "M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.
       </blockquote>
 
       <a
-        href={whatsappLink(`Hola Solar Fire, vi la ficha del producto ${product.name} en la página web y quiero cotizarlo.`)}
+        href={whatsappLink(productQuoteMessage(product))}
         target="_blank"
         rel="noopener noreferrer"
         class="flex w-full items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-brand-red hover:bg-brand-red-dark text-white font-semibold transition-colors"

@@ -2,7 +2,7 @@
 // ProductCard.astro
 import { Image } from "astro:assets";
 import type { Product } from "../data/products";
-import { whatsappLink } from "../data/products";
+import { whatsappLink, productQuoteMessage } from "../data/products";
 
 interface Props {
   product: Product;
@@ -63,7 +63,7 @@ const cover = product.images[0];
         Ver ficha
       </button>
       <a
-        href={whatsappLink(`Hola Solar Fire, quiero cotizar el producto: ${product.name}.`)}
+        href={whatsappLink(productQuoteMessage(product))}
         target="_blank"
         rel="noopener noreferrer"
         class="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl bg-brand-red hover:bg-brand-red-dark text-white text-sm font-semibold transition-colors"

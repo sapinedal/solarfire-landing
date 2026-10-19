@@ -218,7 +218,23 @@ export const products: Product[] = [
   },
 ];
 
-export const WHATSAPP_NUMBER = "573023716599";
+export const WHATSAPP_NUMBER = "573023979501";
+export const WHATSAPP_DISPLAY = "+57 302 397 9501";
 
 export const whatsappLink = (text: string) =>
-  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+  `https://wa.me/${WHATSAPP_NUMBER}${text ? `?text=${encodeURIComponent(text)}` : ""}`;
+
+/** Mensaje de cotización con la información del producto seleccionado. */
+export const productQuoteMessage = (product: Product, detail?: string) =>
+  [
+    "Hola Solar Fire, vengo de la página web y quiero cotizar este producto:",
+    "",
+    `*${product.name}*`,
+    detail,
+    product.variants && !detail && `${product.variants.label}: ${product.variants.items.join(", ")}`,
+    `Categoría: ${product.categories.join(", ")}`,
+    "",
+    "¿Me pueden dar precios y disponibilidad? Gracias.",
+  ]
+    .filter((line) => line !== undefined && line !== false)
+    .join("\n");

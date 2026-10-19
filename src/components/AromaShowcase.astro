@@ -5,8 +5,9 @@ import citronela from "../assets/limpiapisos-desinfectante/limpia-pisos-citronel
 import brisa from "../assets/limpiapisos-desinfectante/limpia-pisos-brisa-fresca.webp";
 import lavanda from "../assets/limpiapisos-desinfectante/limpia-pisos-lavanda.webp";
 import pinol from "../assets/limpiapisos-desinfectante/limpia-pisos-pinol.webp";
-import { whatsappLink } from "../data/products";
+import { whatsappLink, productQuoteMessage, products } from "../data/products";
 
+const limpiaPisos = products.find((p) => p.slug === "limpia-pisos-desinfectante")!;
 const aromas = [
   { name: "Citronela", color: "#ef4b2b", image: citronela, note: "Fresco y cítrico, ideal para áreas comunes." },
   { name: "Brisa Fresca", color: "#1e7fe0", image: brisa, note: "Sensación de aire limpio en baños y cocinas." },
@@ -94,7 +95,7 @@ const features = [
 
         <a
           id="aroma-cta"
-          href={whatsappLink(`Hola Solar Fire, quiero cotizar el Limpia Pisos aroma ${aromas[0].name}.`)}
+          href={whatsappLink(productQuoteMessage(limpiaPisos, `Aroma: ${aromas[0].name}`))}
           target="_blank"
           rel="noopener noreferrer"
           class="mt-8 inline-flex items-center justify-center gap-1.5 px-7 py-4 rounded-2xl bg-brand-red hover:bg-brand-red-dark text-white font-semibold transition-colors"
@@ -107,7 +108,9 @@ const features = [
 </section>
 
 <script>
-  import { whatsappLink } from "../data/products";
+  import { whatsappLink, productQuoteMessage, products } from "../data/products";
+
+  const limpiaPisos = products.find((p) => p.slug === "limpia-pisos-desinfectante")!;
 
   const stage = document.getElementById("aroma-stage");
   const nameEl = document.getElementById("aroma-name");
@@ -133,7 +136,7 @@ const features = [
       if (nameEl) nameEl.textContent = aroma;
       if (noteEl) noteEl.textContent = note;
       if (ctaName) ctaName.textContent = aroma;
-      if (cta) cta.href = whatsappLink(`Hola Solar Fire, quiero cotizar el Limpia Pisos aroma ${aroma}.`);
+      if (cta) cta.href = whatsappLink(productQuoteMessage(limpiaPisos, `Aroma: ${aroma}`));
     });
   });
 </script>

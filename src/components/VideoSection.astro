@@ -1,5 +1,6 @@
 ---
 // VideoSection.astro - Showcase de demostraciones en video reales
+import { whatsappLink } from "../data/products";
 interface VideoItem {
   id: string;
   title: string;
@@ -189,7 +190,7 @@ const videos: VideoItem[] = [
             <!-- Action Button -->
             <div class="pt-2">
               <a
-                href={`https://wa.me/573023716599?text=${encodeURIComponent(item.whatsappMessage)}`}
+                href={whatsappLink(item.whatsappMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="w-full inline-flex items-center justify-center space-x-2 px-5 py-3 rounded-xl bg-brand-red hover:bg-brand-red-dark text-white font-semibold text-sm transition-colors"
