@@ -1,118 +1,75 @@
 ---
 // ProductCard.astro
+import { Image } from "astro:assets";
+import type { Product } from "../data/products";
+import { whatsappLink } from "../data/products";
+
 interface Props {
-  title: string;
-  category: "Hogar" | "Institucional" | "Desinfección" | "Automotriz" | "Línea RUDO";
-  description: string;
-  size: string;
-  colorClass: string;
-  liquidColor: string;
-  invimaCode: string;
-  features: string[];
-  imageSrc?: string;
-  videoLink?: string;
+  product: Product;
 }
 
-const { 
-  title, 
-  category, 
-  description, 
-  size, 
-  colorClass, 
-  liquidColor, 
-  invimaCode, 
-  features,
-  imageSrc,
-  videoLink
-} = Astro.props;
-
-// Category Badge Color
-const categoryBadges: Record<string, string> = {
-  "Hogar": "bg-orange-100 text-orange-800 border-orange-200",
-  "Institucional": "bg-slate-100 text-slate-800 border-slate-200",
-  "Desinfección": "bg-blue-100 text-blue-800 border-blue-200",
-  "Automotriz": "bg-amber-100 text-amber-800 border-amber-200",
-  "Línea RUDO": "bg-red-100 text-red-800 border-red-200 font-bold",
-};
+const { product } = Astro.props;
+const cover = product.images[0];
 ---
 
-<div class="product-card group relative bg-white rounded-3xl p-6 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between" data-category={category}>
-  <div>
-    <!-- Category & Size Header -->
-    <div class="flex items-center justify-between mb-6">
-      <span class={`text-xs font-semibold px-2.5 py-1 rounded-full border ${categoryBadges[category]}`}>
-        {category}
+<article
+  class="product-card group flex flex-col bg-white rounded-3xl border border-cream-dark overflow-hidden hover:shadow-2xl hover:shadow-brand-blue/10 hover:-translate-y-1 transition-all duration-300"
+  data-categories={product.categories.join("|")}
+>
+  <button
+    type="button"
+    class="relative block aspect-[4/5] bg-white overflow-hidden cursor-zoom-in"
+    data-open-product={product.slug}
+    aria-label={`Ver ficha de ${product.name}`}
+  >
+    <div class="absolute inset-x-8 bottom-6 top-1/3 sun-glow opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true"></div>
+    <Image
+      src={cover.src}
+      alt={cover.alt}
+      widths={[320, 480, 640]}
+      sizes="(min-width: 1024px) 380px, (min-width: 640px) 45vw, 90vw"
+      class="relative w-full h-full object-contain p-6 mix-blend-multiply group-hover:scale-[1.04] transition-transform duration-500"
+    />
+    {product.images.length > 1 && (
+      <span class="absolute top-4 right-4 px-2.5 py-1 rounded-full bg-cream text-[11px] font-semibold text-slate-600">
+        {product.images.length} fotos
       </span>
-      <span class="text-xs font-medium text-slate-500 flex items-center space-x-1">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3.5 h-3.5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
-        </svg>
-        <span>{size}</span>
-      </span>
-    </div>
+    )}
+  </button>
 
-    <!-- Product Visual Representation -->
-    <div class="h-48 rounded-2xl flex items-center justify-center relative overflow-hidden border border-slate-100 mb-6 bg-slate-50 transition-colors duration-300">
-      <img 
-        src={imageSrc || `https://placehold.co/400x400/eff6ff/1e3a8a?text=${encodeURIComponent(title)}`} 
-        alt={title} 
-        class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-      />
-      <!-- Certifications indicators -->
-      <div class="absolute bottom-2 right-2 bg-brand-blue/90 backdrop-blur text-white text-[9px] px-2 py-0.5 rounded-md font-medium border border-white/10 shadow-sm">
-        INVIMA Reg.
-      </div>
-      {videoLink && (
-        <a 
-          href={videoLink}
-          class="absolute top-2 right-2 bg-brand-red text-white text-[10px] font-bold px-2 py-1 rounded-full flex items-center space-x-1 shadow-md hover:bg-brand-red/90 transition-all hover:scale-105"
-        >
-          <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-          <span>Ver Video</span>
-        </a>
-      )}
-    </div>
-
-    <!-- Title & Description -->
-    <h3 class="font-display font-bold text-xl text-brand-blue mb-2 group-hover:text-brand-red transition-colors duration-200">
-      {title}
-    </h3>
-    <p class="text-sm text-slate-600 mb-4 line-clamp-2">
-      {description}
-    </p>
-
-    <!-- Specific Product Specs / Features -->
-    <div class="space-y-1.5 mb-6">
-      {features.map((feature) => (
-        <div class="flex items-center space-x-2 text-xs text-slate-500">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-3.5 h-3.5 text-brand-orange">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-          </svg>
-          <span>{feature}</span>
-        </div>
+  <div class="flex flex-col flex-1 p-6 pt-5 border-t border-cream-dark">
+    <ul class="flex flex-wrap gap-1.5 mb-3" aria-label="Categorías">
+      {product.categories.map((c) => (
+        <li class="px-2.5 py-0.5 rounded-full bg-brand-blue-light text-brand-blue text-[11px] font-semibold">{c}</li>
       ))}
-    </div>
-  </div>
+    </ul>
+    <h3 class="font-display font-bold text-xl text-ink leading-tight">{product.name}</h3>
+    <p class="mt-2 text-sm text-slate-600 leading-relaxed">{product.tagline}</p>
 
-  <!-- Footer actions -->
-  <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
-    <div class="flex flex-col">
-      <span class="text-[10px] text-slate-400 uppercase tracking-widest font-semibold">Registro</span>
-      <span class="text-xs font-mono font-medium text-slate-600">{invimaCode}</span>
+    {product.variants && (
+      <p class="mt-4 text-xs text-slate-500">
+        <span class="font-semibold text-slate-700">{product.variants.label}:</span>{" "}
+        {product.variants.items.slice(0, 3).join(" · ")}
+        {product.variants.items.length > 3 && ` +${product.variants.items.length - 3}`}
+      </p>
+    )}
+
+    <div class="mt-auto pt-6 flex items-center gap-2">
+      <button
+        type="button"
+        data-open-product={product.slug}
+        class="flex-1 px-4 py-3 rounded-xl bg-cream hover:bg-cream-dark text-ink text-sm font-semibold transition-colors"
+      >
+        Ver ficha
+      </button>
+      <a
+        href={whatsappLink(`Hola Solar Fire, quiero cotizar el producto: ${product.name}.`)}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl bg-brand-red hover:bg-brand-red-dark text-white text-sm font-semibold transition-colors"
+      >
+        Cotizar
+      </a>
     </div>
-    
-    <a 
-      href={`https://wa.me/573023716599?text=Hola%20Solar%20Fire,%20me%20gustaría%20cotizar%20el%20producto%20${encodeURIComponent(title)}%20en%20presentación%20de%20${encodeURIComponent(size)}.`}
-      target="_blank"
-      rel="noopener noreferrer"
-      class="p-2.5 rounded-xl bg-slate-50 text-slate-600 hover:bg-brand-red hover:text-white transition-all duration-300 shadow-sm border border-slate-200/50 hover:shadow"
-      title="Cotizar por WhatsApp"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
-      </svg>
-    </a>
   </div>
-</div>
+</article>

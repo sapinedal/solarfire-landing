@@ -1,0 +1,139 @@
+---
+// AromaShowcase.astro — Limpia Pisos destacado con selector de aroma
+import { Image } from "astro:assets";
+import citronela from "../assets/limpiapisos-desinfectante/limpia-pisos-citronela.webp";
+import brisa from "../assets/limpiapisos-desinfectante/limpia-pisos-brisa-fresca.webp";
+import lavanda from "../assets/limpiapisos-desinfectante/limpia-pisos-lavanda.webp";
+import pinol from "../assets/limpiapisos-desinfectante/limpia-pisos-pinol.webp";
+import { whatsappLink } from "../data/products";
+
+const aromas = [
+  { name: "Citronela", color: "#ef4b2b", image: citronela, note: "Fresco y cítrico, ideal para áreas comunes." },
+  { name: "Brisa Fresca", color: "#1e7fe0", image: brisa, note: "Sensación de aire limpio en baños y cocinas." },
+  { name: "Lavanda", color: "#7b3fc4", image: lavanda, note: "Floral y relajante para todo el hogar." },
+  { name: "Pinol", color: "#1f6b3a", image: pinol, note: "Aroma clásico a limpio, intenso y duradero." },
+];
+const otherAromas = ["Floral", "Canela", "Fusión", "Talco"];
+const features = [
+  { title: "Limpia", text: "Remueve la suciedad cotidiana." },
+  { title: "Desinfecta", text: "Amonio cuaternario de 5.ª generación." },
+  { title: "Da brillo", text: "Brillo progresivo con el uso." },
+];
+---
+
+<section id="aromas" class="relative py-20 md:py-28 overflow-hidden bg-cream">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <!-- Bottle stage -->
+      <div class="reveal relative">
+        <div
+          id="aroma-stage"
+          class="relative aspect-square max-w-[18rem] sm:max-w-lg mx-auto rounded-full transition-colors duration-500"
+          style={`background: radial-gradient(circle, ${aromas[0].color}33 0%, ${aromas[0].color}10 45%, transparent 70%)`}
+        >
+          {aromas.map((a, i) => (
+            <Image
+              src={a.image}
+              alt={`Limpia Pisos Solar Fire aroma ${a.name}`}
+              widths={[360, 540, 720]}
+              sizes="(min-width: 1024px) 500px, 85vw"
+              data-aroma-img={a.name}
+              aria-hidden={i === 0 ? "false" : "true"}
+              class:list={[
+                "absolute inset-0 m-auto h-[92%] w-auto object-contain transition-all duration-500 mix-blend-multiply",
+                i === 0 ? "opacity-100 scale-100" : "opacity-0 scale-95",
+              ]}
+            />
+          ))}
+        </div>
+      </div>
+
+      <!-- Copy + picker -->
+      <div class="reveal">
+        <p class="eyebrow">Producto estrella</p>
+        <h2 class="mt-3 font-display font-extrabold text-4xl md:text-5xl text-brand-blue tracking-tight leading-[1.05]">
+          Limpia Pisos 3 en 1, <br class="hidden sm:block" />elige tu aroma
+        </h2>
+        <p class="mt-5 text-lg text-slate-600 leading-relaxed">
+          Fórmula biodegradable que deja tus pisos impecables y tus espacios con fragancia de larga duración.
+        </p>
+
+        <dl class="mt-8 grid grid-cols-3 gap-3">
+          {features.map((f) => (
+            <div class="rounded-2xl bg-white border border-cream-dark p-4">
+              <dt class="font-display font-bold text-brand-blue">{f.title}</dt>
+              <dd class="mt-1 text-xs text-slate-500 leading-snug">{f.text}</dd>
+            </div>
+          ))}
+        </dl>
+
+        <div class="mt-8">
+          <p class="text-sm font-semibold text-ink mb-3">
+            Aroma: <span id="aroma-name">{aromas[0].name}</span>
+          </p>
+          <div class="flex flex-wrap gap-3" role="group" aria-label="Seleccionar aroma">
+            {aromas.map((a, i) => (
+              <button
+                type="button"
+                class="aroma-btn group flex items-center gap-2 pl-1.5 pr-4 py-1.5 rounded-full bg-white border-2 border-cream-dark aria-pressed:border-ink transition-colors"
+                data-aroma={a.name}
+                data-color={a.color}
+                data-note={a.note}
+                aria-pressed={i === 0 ? "true" : "false"}
+              >
+                <span class="w-7 h-7 rounded-full ring-2 ring-white shadow-inner" style={`background:${a.color}`}></span>
+                <span class="text-sm font-semibold text-ink">{a.name}</span>
+              </button>
+            ))}
+          </div>
+          <p id="aroma-note" class="mt-4 text-sm text-slate-600 min-h-5">{aromas[0].note}</p>
+          <p class="mt-2 text-xs text-slate-500">
+            También disponible en: {otherAromas.join(", ")}.
+          </p>
+        </div>
+
+        <a
+          id="aroma-cta"
+          href={whatsappLink(`Hola Solar Fire, quiero cotizar el Limpia Pisos aroma ${aromas[0].name}.`)}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-8 inline-flex items-center justify-center gap-1.5 px-7 py-4 rounded-2xl bg-brand-red hover:bg-brand-red-dark text-white font-semibold transition-colors"
+        >
+          Cotizar aroma<span id="aroma-cta-name">{aromas[0].name}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { whatsappLink } from "../data/products";
+
+  const stage = document.getElementById("aroma-stage");
+  const nameEl = document.getElementById("aroma-name");
+  const noteEl = document.getElementById("aroma-note");
+  const cta = document.getElementById("aroma-cta") as HTMLAnchorElement | null;
+  const ctaName = document.getElementById("aroma-cta-name");
+  const imgs = document.querySelectorAll<HTMLImageElement>("[data-aroma-img]");
+  const btns = document.querySelectorAll<HTMLButtonElement>(".aroma-btn");
+
+  btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const { aroma = "", color = "", note = "" } = btn.dataset;
+      btns.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+      imgs.forEach((img) => {
+        const active = img.dataset.aromaImg === aroma;
+        img.classList.toggle("opacity-0", !active);
+        img.classList.toggle("scale-95", !active);
+        img.classList.toggle("opacity-100", active);
+        img.classList.toggle("scale-100", active);
+        img.setAttribute("aria-hidden", String(!active));
+      });
+      if (stage) stage.style.background = `radial-gradient(circle, ${color}33 0%, ${color}10 45%, transparent 70%)`;
+      if (nameEl) nameEl.textContent = aroma;
+      if (noteEl) noteEl.textContent = note;
+      if (ctaName) ctaName.textContent = aroma;
+      if (cta) cta.href = whatsappLink(`Hola Solar Fire, quiero cotizar el Limpia Pisos aroma ${aroma}.`);
+    });
+  });
+</script>

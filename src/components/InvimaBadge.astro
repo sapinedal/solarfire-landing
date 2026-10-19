@@ -1,223 +1,78 @@
 ---
-// InvimaBadge.astro
+// InvimaBadge.astro — Nosotros, confianza y línea BIO
+import { Image } from "astro:assets";
 import invimaLogo from "../assets/logo-invima.png";
+import bioBanner from "../assets/banner_products.webp";
+
+const pillars = [
+  {
+    title: "Concepto sanitario INVIMA",
+    text: "Condiciones sanitarias y capacidad de fabricación para productos de higiene doméstica e industrial.",
+    icon: "M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z",
+  },
+  {
+    title: "Fórmulas biodegradables",
+    text: "Tensoactivos amigables con el medio ambiente, sin sacrificar rendimiento.",
+    icon: "M12.75 3.03v.568c0 .334.148.65.405.864l1.068.89c.442.369.535 1.01.216 1.49l-.51.766a2.25 2.25 0 0 1-1.161.886l-.143.048a1.107 1.107 0 0 0-.57 1.664c.369.555.169 1.307-.427 1.605L9 13.125l.423 1.059a.956.956 0 0 1-1.652.928l-.679-.906a1.125 1.125 0 0 0-1.906.172L4.5 15.75l-.612.153M12.75 3.031a9 9 0 0 0-8.862 12.872M12.75 3.031a9 9 0 0 1 6.69 14.036m0 0-.177-.529A2.25 2.25 0 0 0 17.128 15H16.5l-.324-.324a1.453 1.453 0 0 0-2.328.377l-.036.073a1.586 1.586 0 0 1-.982.816l-.99.282c-.55.157-.894.702-.8 1.267l.073.438c.08.474.49.821.97.821.846 0 1.598.542 1.865 1.345l.215.643m5.276-3.67a9.012 9.012 0 0 1-5.276 3.67m0 0a9 9 0 0 1-10.275-4.835M15.75 9c0 .896-.393 1.7-1.016 2.25",
+  },
+  {
+    title: "Directo de fábrica",
+    text: "Planta en Itagüí con venta mayorista y al detal para empresas, colegios, conjuntos y hogares.",
+    icon: "M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z",
+  },
+  {
+    title: "Despachos nacionales",
+    text: "Enviamos a toda Colombia y te asesoramos con fichas técnicas de cada producto.",
+    icon: "M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12",
+  },
+];
 ---
 
-<section id="nosotros" class="py-20 bg-slate-50 relative overflow-hidden">
-  <!-- Decorative background shapes -->
-  <div
-    class="absolute top-1/2 left-1/3 w-96 h-96 bg-brand-blue/5 rounded-full blur-3xl pointer-events-none"
-  >
-  </div>
-  <div
-    class="absolute bottom-10 right-10 w-72 h-72 bg-brand-yellow/10 rounded-full blur-3xl pointer-events-none"
-  >
-  </div>
-
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
-      <!-- Text content -->
-      <div class="lg:col-span-7 space-y-6">
-        <div
-          class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-brand-blue-light border border-brand-blue/15 text-brand-blue font-semibold text-sm"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="2.5"
-            stroke="currentColor"
-            class="w-4 h-4"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"
-            ></path>
-          </svg>
-          <span>Certificación Oficial Colombiana</span>
-        </div>
-
-        <h2
-          class="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-brand-blue tracking-tight leading-none"
-        >
-          Calidad Certificada por el <span class="text-gradient-fire"
-            >INVIMA</span
-          >
+<section id="nosotros" class="py-20 md:py-28 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-12 items-start">
+      <div class="reveal lg:col-span-5 lg:sticky lg:top-32">
+        <p class="eyebrow">Quiénes somos</p>
+        <h2 class="mt-3 font-display font-extrabold text-4xl md:text-5xl text-brand-blue tracking-tight leading-[1.05]">
+          Fabricamos en Colombia, con calidad certificada
         </h2>
-
-        <p class="text-lg text-slate-600 leading-relaxed">
-          En <strong class="font-semibold text-brand-blue"
-            >Solar Fire S.A.S.</strong
-          >, fabricamos cada producto bajo estrictas normas de control de
-          calidad e higiene. Contamos con el concepto sanitario favorable y
-          registros <strong class="font-semibold text-brand-blue">INVIMA</strong
-          > de capacidad de producción, asegurando que todos nuestros desinfectantes,
-          jabones y detergentes son altamente efectivos, seguros para la salud y cumplen
-          con la normatividad nacional.
+        <p class="mt-5 text-lg text-slate-600 leading-relaxed">
+          En <strong class="font-semibold text-ink">Solar Fire S.A.S.</strong> fabricamos cada producto bajo estrictas
+          normas de control de calidad e higiene, para que limpiar y desinfectar sea más fácil, seguro y eficiente.
         </p>
-
-        <!-- Feature checkboxes -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-          <div class="flex items-start space-x-3">
-            <div
-              class="shrink-0 w-6 h-6 rounded-full bg-brand-yellow/20 flex items-center justify-center text-brand-orange"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                class="w-4 h-4"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-                  clip-rule="evenodd"></path>
-              </svg>
-            </div>
-            <div>
-              <h4 class="font-semibold text-slate-800">
-                Ubicación Estratégica
-              </h4>
-              <p class="text-slate-500 text-sm">
-                Planta de producción en Itagüí - Antioquia, listos para
-                despachos nacionales.
-              </p>
-            </div>
-          </div>
-
-          <div class="flex items-start space-x-3">
-            <div
-              class="shrink-0 w-6 h-6 rounded-full bg-brand-yellow/20 flex items-center justify-center text-brand-orange"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                class="w-4 h-4"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-                  clip-rule="evenodd"></path>
-              </svg>
-            </div>
-            <div>
-              <h4 class="font-semibold text-slate-800">
-                Fórmulas Biodegradables
-              </h4>
-              <p class="text-slate-500 text-sm">
-                Comprometidos con el medio ambiente utilizando tensoactivos
-                amigables.
-              </p>
-            </div>
-          </div>
-
-          <div class="flex items-start space-x-3">
-            <div
-              class="shrink-0 w-6 h-6 rounded-full bg-brand-yellow/20 flex items-center justify-center text-brand-orange"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                class="w-4 h-4"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-                  clip-rule="evenodd"></path>
-              </svg>
-            </div>
-            <div>
-              <h4 class="font-semibold text-slate-800">
-                Desinfección de Alto Espectro
-              </h4>
-              <p class="text-slate-500 text-sm">
-                Productos efectivos contra bacterias, hongos y virus.
-              </p>
-            </div>
-          </div>
-
-          <div class="flex items-start space-x-3">
-            <div
-              class="shrink-0 w-6 h-6 rounded-full bg-brand-yellow/20 flex items-center justify-center text-brand-orange"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                class="w-4 h-4"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-                  clip-rule="evenodd"></path>
-              </svg>
-            </div>
-            <div>
-              <h4 class="font-semibold text-slate-800">
-                Venta Mayorista y Detal
-              </h4>
-              <p class="text-slate-500 text-sm">
-                Suministros directos para empresas, colegios, conjuntos y
-                hogares.
-              </p>
-            </div>
+        <div class="mt-8 inline-flex items-center gap-4 rounded-2xl border border-cream-dark bg-cream p-4 pr-6">
+          <Image src={invimaLogo} alt="Logo INVIMA" width={160} class="h-12 w-auto" />
+          <div class="text-sm leading-tight">
+            <p class="font-semibold text-ink">Concepto sanitario favorable</p>
+            <p class="text-slate-500">Hecho en Itagüí, Antioquia</p>
           </div>
         </div>
       </div>
 
-      <!-- Trust graphic / Badge -->
-      <div class="mt-12 lg:mt-0 lg:col-span-5 flex justify-center">
-        <div class="relative group">
-          <!-- Outer decorative rings with shine effect -->
-          <div
-            class="absolute inset-0 bg-linear-to-tr from-brand-red/5 via-brand-orange/5 to-brand-yellow/10 rounded-3xl blur-2xl opacity-60 group-hover:opacity-85 transition-opacity duration-500"
-          >
-          </div>
-
-          <div
-            class="relative bg-white rounded-3xl p-8 border border-slate-100 text-slate-800 w-full max-w-sm flex flex-col items-center text-center shadow-xl"
-          >
-            <!-- Seal Badge Emblem -->
-            <div
-              class="w-28 h-28 rounded-full bg-white p-4 shadow-md flex items-center justify-center mb-6 border border-slate-100 relative"
-            >
-              <img
-                src={invimaLogo.src}
-                alt="Logo INVIMA"
-                class="w-full h-auto object-contain"
-              />
-            </div>
-
-            <h3 class="font-display font-bold text-xl text-brand-blue">
-              Concepto Sanitario
-            </h3>
-            <p class="text-slate-600 text-sm mt-2 font-light">
-              Certificación de Condiciones Sanitarias y Capacidad de Fabricación
-              para productos de higiene doméstica e industrial.
-            </p>
-
-            <div class="w-full border-t border-slate-100 my-6"></div>
-
-            <div
-              class="flex items-center space-x-3 bg-slate-50 px-4 py-2.5 rounded-xl border border-slate-200/50"
-            >
-              <!-- Colombian Flag mini representation -->
-              <div class="flex flex-col w-6 h-4 rounded overflow-hidden">
-                <div class="h-2 bg-yellow-400"></div>
-                <div class="h-1 bg-blue-700"></div>
-                <div class="h-1 bg-red-600"></div>
-              </div>
-              <span
-                class="text-xs font-semibold text-slate-600 tracking-wider uppercase"
-                >Hecho en Colombia</span
-              >
-            </div>
-          </div>
-        </div>
-      </div>
+      <ul class="lg:col-span-7 grid sm:grid-cols-2 gap-4">
+        {pillars.map((p) => (
+          <li class="reveal rounded-3xl bg-cream p-7 border border-cream-dark">
+            <span class="inline-flex w-12 h-12 items-center justify-center rounded-2xl bg-white text-brand-orange shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="w-6 h-6" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d={p.icon} />
+              </svg>
+            </span>
+            <h3 class="mt-5 font-display font-bold text-xl text-ink">{p.title}</h3>
+            <p class="mt-2 text-sm text-slate-600 leading-relaxed">{p.text}</p>
+          </li>
+        ))}
+      </ul>
     </div>
+
+    <!-- Línea BIO banner -->
+    <figure class="reveal mt-20 rounded-[2rem] overflow-hidden border border-cream-dark shadow-xl shadow-brand-blue/5">
+      <Image
+        src={bioBanner}
+        alt="Línea de aseo BIO de Solar Fire: calidad, rendimiento y cuidado para tu entorno"
+        widths={[640, 960, 1280]}
+        sizes="(min-width: 1280px) 1216px, 94vw"
+        class="w-full h-auto"
+      />
+    </figure>
   </div>
 </section>

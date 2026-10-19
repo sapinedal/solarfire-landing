@@ -1,10 +1,11 @@
 ---
 // Footer.astro
+import { Image } from 'astro:assets';
 import logoImage from '../assets/logo-solar-fire.png';
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-[#0c132c] text-slate-400 py-16 border-t border-slate-900/30 relative overflow-hidden">
+<footer class="bg-ink text-slate-400 py-16 relative overflow-hidden">
   <!-- Decorative glow -->
   <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-blue/20 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -14,7 +15,9 @@ const currentYear = new Date().getFullYear();
       <!-- Column 1: Brand description -->
       <div class="md:col-span-5 space-y-6">
         <a href="#inicio" class="flex items-center group">
-          <img src={logoImage.src} alt="Solar Fire" class="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+          <span class="inline-flex rounded-2xl bg-white px-4 py-3">
+            <Image src={logoImage} alt="Solar Fire" width={160} class="h-10 w-auto" />
+          </span>
         </a>
         <p class="text-slate-400 text-sm leading-relaxed max-w-sm">
           <strong class="font-semibold text-slate-200">Solar Fire S.A.S.</strong> es un fabricante colombiano de productos químicos de limpieza, higiene y desinfección doméstica e industrial. Comprometidos con el desarrollo sostenible y la bioseguridad del país.
@@ -26,19 +29,20 @@ const currentYear = new Date().getFullYear();
 
       <!-- Column 2: Navigation Links -->
       <div class="md:col-span-3 space-y-4">
-        <h4 class="text-white font-bold text-sm uppercase tracking-wider">Enlaces Rápidos</h4>
+        <h2 class="text-white font-bold text-sm uppercase tracking-wider">Enlaces rápidos</h2>
         <ul class="space-y-2.5 text-sm">
           <li><a href="#inicio" class="hover:text-white transition-colors">Inicio</a></li>
+          <li><a href="#productos" class="hover:text-white transition-colors">Catálogo de productos</a></li>
+          <li><a href="#aromas" class="hover:text-white transition-colors">Limpia Pisos 3 en 1</a></li>
+          <li><a href="#demostraciones" class="hover:text-white transition-colors">Línea RUDO en video</a></li>
           <li><a href="#nosotros" class="hover:text-white transition-colors">Nosotros & INVIMA</a></li>
-          <li><a href="#productos" class="hover:text-white transition-colors">Catálogo de Productos</a></li>
-          <li><a href="#simulador" class="hover:text-white transition-colors">Laboratorio / Simulador</a></li>
           <li><a href="#contacto" class="hover:text-white transition-colors">Contacto / Cotizar</a></li>
         </ul>
       </div>
 
       <!-- Column 3: Contact details & Instagram link -->
       <div class="md:col-span-4 space-y-4">
-        <h4 class="text-white font-bold text-sm uppercase tracking-wider">Contacto & Redes</h4>
+        <h2 class="text-white font-bold text-sm uppercase tracking-wider">Contacto & redes</h2>
         <ul class="space-y-3 text-sm text-slate-400">
           <li class="flex items-center space-x-2">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 text-brand-orange">
@@ -88,7 +92,7 @@ const currentYear = new Date().getFullYear();
     </div>
 
     <!-- Bottom copyright -->
-    <div class="mt-12 pt-8 border-t border-slate-900 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="mt-12 pt-8 border-t border-white/10 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
       <p>&copy; {currentYear} Solar Fire S.A.S. Todos los derechos reservados.</p>
       <div class="flex items-center space-x-4">
         <span>Itagüí, Antioquia</span>

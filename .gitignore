@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# copias originales de imágenes (JPEG) antes de optimizar
+_originales/

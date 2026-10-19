@@ -1,211 +1,95 @@
 ---
 // Hero.astro
+import { Image } from "astro:assets";
+import heroImage from "../assets/limpiapisos-desinfectante/limpia-pisos-juntos.webp";
+import { whatsappLink } from "../data/products";
+
+const highlights = [
+  { value: "INVIMA", label: "Concepto sanitario" },
+  { value: "Bio", label: "Fórmulas biodegradables" },
+  { value: "Directo", label: "De fábrica a tu negocio" },
+];
 ---
 
-<section
-  id="inicio"
-  class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-linear-to-b from-blue-50/60 via-slate-50/30 to-white text-slate-800"
->
-  <!-- Dynamic Gradient Background & Patterns -->
-  <div
-    class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,var(--tw-gradient-stops))] from-blue-100/30 via-slate-50/50 to-white pointer-events-none"
-  >
-  </div>
+<section id="inicio" class="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      <!-- Copy -->
+      <div class="lg:col-span-6 text-center lg:text-left">
+        <p class="eyebrow">Fabricantes en Itagüí, Antioquia</p>
 
-  <!-- Subtle pattern overlay -->
-  <div
-    class="absolute inset-0 bg-[linear-gradient(to_right,#00000003_1px,transparent_1px),linear-gradient(to_bottom,#00000003_1px,transparent_1px)] bg-size-[4rem_4rem] pointer-events-none"
-  >
-  </div>
-
-  <!-- Decorative blur circles -->
-  <div
-    class="absolute -top-40 -right-40 w-[500px] h-[500px] bg-brand-yellow/15 rounded-full blur-3xl pointer-events-none"
-  >
-  </div>
-  <div
-    class="absolute top-1/2 -left-40 w-[400px] h-[400px] bg-brand-blue/5 rounded-full blur-3xl pointer-events-none"
-  >
-  </div>
-
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    <div class="lg:grid lg:grid-cols-12 lg:gap-12 items-center">
-      <!-- Text content -->
-      <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
-        <h1
-          class="font-display font-extrabold text-4xl sm:text-5xl md:text-6xl text-brand-blue tracking-tight leading-none"
-        >
-          Poder de Limpieza que <br class="hidden sm:inline" />
-          <span class="text-gradient-fire font-black">Transforma </span>
-          <span class="text-brand-blue font-black">tus Espacios</span>
+        <h1 class="mt-5 font-display font-extrabold text-[2.6rem] leading-[1.05] sm:text-6xl lg:text-[4.25rem] text-brand-blue tracking-tight">
+          Limpieza y protección
+          <span class="relative inline-block text-brand-red">
+            que se nota
+            <svg class="absolute left-0 -bottom-2 w-full h-3 text-brand-sun" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M2 9 Q 50 2 100 7 T 198 5" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" />
+            </svg>
+          </span>
         </h1>
 
-        <p
-          class="text-lg md:text-xl text-slate-600 font-light max-w-2xl mx-auto lg:mx-0 leading-relaxed"
-        >
-          Fabricantes líderes de productos de aseo, desinfección y limpieza en <strong
-            class="font-semibold text-brand-blue">Itagüí, Antioquia</strong
-          >. Fórmulas de alta concentración certificadas por <strong
-            class="font-semibold text-brand-blue">INVIMA</strong
-          >, diseñadas para el cuidado total de tus superficies y la salud de tu
-          familia o empresa.
+        <p class="mt-7 text-lg md:text-xl text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+          Desinfectantes, limpia pisos, lavaloza, detergentes y desengrasantes de alto rendimiento para
+          hogares, empresas e instituciones. Precio de fábrica y despachos a toda Colombia.
         </p>
 
-        <!-- CTAs -->
-        <div
-          class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
-        >
-          <a
-            href="#contacto"
-            class="w-full sm:w-auto relative group overflow-hidden px-8 py-4 rounded-2xl bg-brand-red text-white font-bold text-center transition-all duration-300 shadow-lg shadow-brand-red/20 hover:shadow-brand-red/40 hover:-translate-y-0.5 active:translate-y-0"
-          >
-            <!-- Sweep light effect -->
-            <span
-              class="absolute inset-0 w-full h-full bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out"
-            ></span>
-            Solicitar Cotización
-          </a>
-
+        <div class="mt-9 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3">
           <a
             href="#productos"
-            class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 hover:text-brand-blue font-semibold text-center transition-all duration-200 flex items-center justify-center space-x-2 shadow-xs"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-brand-blue hover:bg-brand-blue-dark text-white font-semibold transition-colors"
           >
-            <span>Ver Catálogo</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="2.5"
-              stroke="currentColor"
-              class="w-4 h-4"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+            Ver productos
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
             </svg>
           </a>
-
           <a
-            href="#demostraciones"
-            class="w-full sm:w-auto px-6 py-4 rounded-2xl bg-brand-red/10 hover:bg-brand-red/20 border border-brand-red/20 text-brand-red font-bold text-center transition-all duration-200 flex items-center justify-center space-x-2"
+            href={whatsappLink("Hola Solar Fire, vengo de la página web y quiero una cotización.")}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-white border border-cream-dark hover:border-brand-blue/30 text-ink font-semibold transition-colors"
           >
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M8 5v14l11-7z" />
+            <svg class="w-5 h-5 text-emerald-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.2 8.2 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.19 8.19 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.86-.87 2.07 0 1.22.89 2.39 1 2.56.14.17 1.76 2.67 4.25 3.73.59.27 1.05.42 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.27-.25-.14-1.47-.74-1.69-.82-.23-.08-.37-.12-.56.12-.16.25-.64.81-.78.97-.15.17-.29.19-.53.07-.26-.13-1.06-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.12-.24-.01-.39.11-.5.11-.11.27-.29.37-.44.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.11-.56-1.35-.77-1.84-.2-.48-.4-.42-.56-.43-.14 0-.3-.01-.47-.01" />
             </svg>
-            <span>Ver Videos Reales</span>
+            Cotizar por WhatsApp
           </a>
         </div>
 
-        <!-- Micro stats / Highlights -->
-        <div
-          class="grid grid-cols-3 gap-6 pt-6 border-t border-slate-100 max-w-lg mx-auto lg:mx-0 text-left"
-        >
-          <div>
-            <div class="text-3xl font-bold font-display text-brand-red">
-              100%
+        <dl class="mt-12 grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0 text-left border-t border-cream-dark pt-6">
+          {highlights.map((h) => (
+            <div>
+              <dt class="sr-only">{h.label}</dt>
+              <dd class="font-display font-bold text-2xl text-brand-blue">{h.value}</dd>
+              <dd class="text-xs text-slate-500 mt-0.5 leading-snug">{h.label}</dd>
             </div>
-            <div class="text-xs text-slate-500 uppercase tracking-widest mt-1">
-              INVIMA Certificado
-            </div>
-          </div>
-          <div>
-            <div class="text-3xl font-bold font-display text-brand-orange">
-              Bio
-            </div>
-            <div class="text-xs text-slate-500 uppercase tracking-widest mt-1">
-              Biodegradables
-            </div>
-          </div>
-          <div>
-            <div class="text-3xl font-bold font-display text-brand-blue">
-              Itagüí
-            </div>
-            <div class="text-xs text-slate-500 uppercase tracking-widest mt-1">
-              Sede Antioquia
-            </div>
-          </div>
-        </div>
+          ))}
+        </dl>
       </div>
 
-      <!-- Live Video / Product Feature Card -->
-      <div class="mt-16 lg:mt-0 lg:col-span-5 flex justify-center">
-        <div class="relative w-full max-w-[420px]">
-          <!-- Glow behind mockup -->
-          <div
-            class="absolute -inset-4 bg-linear-to-tr from-brand-red/20 via-brand-orange/15 to-brand-blue/20 rounded-3xl blur-3xl opacity-70"
-          >
+      <!-- Visual -->
+      <div class="lg:col-span-6 relative">
+        <div class="absolute inset-0 -m-10 sun-glow rounded-full pointer-events-none" aria-hidden="true"></div>
+        <svg class="absolute -top-6 -right-4 w-40 h-40 text-brand-sun/60 animate-spin-slow pointer-events-none hidden sm:block" viewBox="0 0 100 100" aria-hidden="true">
+          {Array.from({ length: 16 }).map((_, i) => (
+            <rect x="48.5" y="2" width="3" height="14" rx="1.5" fill="currentColor" transform={`rotate(${i * 22.5} 50 50)`} />
+          ))}
+        </svg>
+
+        <div class="relative rounded-[2rem] bg-white border border-cream-dark shadow-2xl shadow-brand-blue/10 p-4 sm:p-6">
+          <Image
+            src={heroImage}
+            alt="Línea Limpia Pisos Solar Fire en seis aromas"
+            widths={[480, 720, 960, 1280]}
+            sizes="(min-width: 1024px) 600px, 92vw"
+            loading="eager"
+            fetchpriority="high"
+            class="w-full h-auto rounded-2xl mix-blend-multiply"
+          />
+          <div class="absolute -bottom-5 left-6 sm:left-8 flex flex-wrap gap-2">
+            <span class="px-3.5 py-2 rounded-full bg-brand-blue text-white text-xs font-semibold shadow-lg">Amonio cuaternario 5.ª gen.</span>
+            <span class="px-3.5 py-2 rounded-full bg-brand-sun text-ink text-xs font-semibold shadow-lg">8 aromas</span>
           </div>
-
-          <!-- Video Showcase Card Container -->
-          <a 
-            href="#demostraciones"
-            class="group relative bg-white p-3 rounded-3xl border border-slate-200/80 shadow-2xl flex flex-col items-center overflow-hidden block transition-transform duration-300 hover:scale-[1.02]"
-            aria-label="Ver demostración en video de la línea RUDO"
-          >
-            <!-- Video preview frame -->
-            <div class="relative w-full aspect-4/5 rounded-2xl overflow-hidden bg-slate-900">
-              <video
-                src="/video-2.mp4"
-                poster="/video-2-poster.png"
-                autoplay
-                muted
-                loop
-                playsinline
-                preload="metadata"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              >
-              </video>
-
-              <!-- Gradient overlay for text legibility -->
-              <div class="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-black/30 pointer-events-none"></div>
-
-              <!-- Top badges -->
-              <div class="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
-                <span class="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-black/60 backdrop-blur-md text-white border border-white/20">
-                  Línea RUDO
-                </span>
-                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-brand-red text-white flex items-center space-x-1.5 shadow-lg">
-                  <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
-                  <span>En Acción</span>
-                </span>
-              </div>
-
-              <!-- Center Play Badge -->
-              <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div class="w-16 h-16 rounded-full bg-brand-red/90 group-hover:bg-brand-red text-white flex items-center justify-center shadow-2xl backdrop-blur-xs transform transition-transform duration-300 group-hover:scale-115 border-2 border-white/40">
-                  <svg class="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-              </div>
-
-              <!-- Bottom captions -->
-              <div class="absolute bottom-4 left-4 right-4 text-white pointer-events-none space-y-1">
-                <p class="text-xs font-bold text-brand-yellow uppercase tracking-wider">Demostración en Vivo</p>
-                <h3 class="text-lg font-bold font-display leading-tight drop-shadow-md">
-                  Desincrustante Alcalino Nivel 4
-                </h3>
-                <p class="text-xs text-slate-200 line-clamp-1">
-                  Efecto inmediato en acero inoxidable y superficies industriales.
-                </p>
-              </div>
-            </div>
-
-            <!-- Card Bottom Bar -->
-            <div class="w-full px-3 py-2.5 flex items-center justify-between text-xs font-semibold text-slate-600">
-              <span class="flex items-center space-x-1 text-brand-blue">
-                <svg class="w-4 h-4 text-brand-red" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-                </svg>
-                <span>3 videos de pruebas reales</span>
-              </span>
-              <span class="text-brand-red group-hover:underline flex items-center space-x-1 font-bold">
-                <span>Ver todos</span>
-                <span>&rarr;</span>
-              </span>
-            </div>
-          </a>
         </div>
       </div>
     </div>

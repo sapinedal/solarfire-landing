@@ -2,38 +2,36 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
-import InvimaBadge from '../components/InvimaBadge.astro';
 import ProductSection from '../components/ProductSection.astro';
+import AromaShowcase from '../components/AromaShowcase.astro';
 import VideoSection from '../components/VideoSection.astro';
-import CleaningSimulator from '../components/CleaningSimulator.astro';
+import InvimaBadge from '../components/InvimaBadge.astro';
 import ContactForm from '../components/ContactForm.astro';
 import Footer from '../components/Footer.astro';
 ---
 
 <Layout>
-  <!-- Main Header -->
   <Navbar />
-  
+
   <main>
-    <!-- Hero Banner with core brand presentation -->
+    <!-- Brand presentation -->
     <Hero />
-    
-    <!-- INVIMA & Quality Trust Section -->
-    <InvimaBadge />
-    
-    <!-- Interactive Filterable Products Catalog -->
+
+    <!-- Filterable catalog with product detail dialogs -->
     <ProductSection />
-    
-    <!-- Real Video Demonstrations & RUDO Showcase -->
+
+    <!-- Featured product: Limpia Pisos aroma picker -->
+    <AromaShowcase />
+
+    <!-- Real video demonstrations (Línea RUDO) -->
     <VideoSection />
-    
-    <!-- Interactive Before & After Simulator -->
-    <CleaningSimulator />
-    
-    <!-- Professional Quote and Lead Form -->
+
+    <!-- About, INVIMA & Línea BIO -->
+    <InvimaBadge />
+
+    <!-- Quote form (opens WhatsApp) -->
     <ContactForm />
   </main>
 
-  <!-- Corporate Footer -->
   <Footer />
 </Layout>

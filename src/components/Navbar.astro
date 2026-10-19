@@ -1,89 +1,105 @@
 ---
 // Navbar.astro
-import logoImage from '../assets/logo-solar-fire.png';
+import { Image } from "astro:assets";
+import logoImage from "../assets/logo-solar-fire.png";
+import { whatsappLink } from "../data/products";
+
+const links = [
+  { href: "#productos", label: "Productos" },
+  { href: "#aromas", label: "Limpia Pisos" },
+  { href: "#demostraciones", label: "Línea RUDO" },
+  { href: "#nosotros", label: "Nosotros" },
+  { href: "#contacto", label: "Contacto" },
+];
+const quoteHref = whatsappLink("Hola Solar Fire, vengo de la página web y quiero cotizar productos.");
 ---
 
-<header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-5">
+<header id="main-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <nav class="flex items-center justify-between glassmorphism rounded-2xl px-6 py-4 shadow-sm border border-white/25">
-      <!-- Logo -->
-      <a href="#inicio" class="flex items-center group">
-        <img src={logoImage.src} alt="Solar Fire" class="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+    <nav
+      id="main-nav"
+      class="mt-4 flex items-center justify-between rounded-2xl px-4 sm:px-6 py-3 bg-white/85 backdrop-blur-md border border-cream-dark transition-shadow duration-300"
+      aria-label="Principal"
+    >
+      <a href="#inicio" class="flex items-center shrink-0" aria-label="Solar Fire, ir al inicio">
+        <Image src={logoImage} alt="Solar Fire" width={160} class="h-10 sm:h-11 w-auto" loading="eager" />
       </a>
 
-      <!-- Desktop Navigation Links -->
-      <div class="hidden md:flex items-center space-x-7">
-        <a href="#inicio" class="font-medium text-slate-700 hover:text-brand-blue transition-colors duration-200">Inicio</a>
-        <a href="#productos" class="font-medium text-slate-700 hover:text-brand-blue transition-colors duration-200">Productos</a>
-        <a href="#demostraciones" class="font-medium text-slate-700 hover:text-brand-blue transition-colors duration-200 flex items-center space-x-1.5">
-          <span>Demostraciones</span>
-          <span class="px-1.5 py-0.5 text-[10px] font-bold rounded-md bg-brand-red text-white">Video</span>
-        </a>
-        <a href="#simulador" class="font-medium text-slate-700 hover:text-brand-blue transition-colors duration-200">Simulador</a>
-        <a href="#contacto" class="font-medium text-slate-700 hover:text-brand-blue transition-colors duration-200">Contacto</a>
+      <div class="hidden lg:flex items-center gap-1">
+        {links.map((l) => (
+          <a
+            href={l.href}
+            class="nav-link px-3.5 py-2 rounded-lg text-[15px] font-medium text-slate-600 hover:text-brand-blue hover:bg-cream transition-colors"
+          >
+            {l.label}
+          </a>
+        ))}
       </div>
 
-      <!-- Call to action button -->
-      <div class="hidden md:block">
-        <a href="#contacto" class="inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-white font-medium bg-brand-blue hover:bg-brand-blue-dark transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5">
-          Cotizar Ahora
+      <div class="flex items-center gap-2">
+        <a
+          href={quoteHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-red hover:bg-brand-red-dark text-white text-sm font-semibold transition-colors"
+        >
+          Cotizar ahora
         </a>
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          class="lg:hidden p-2 rounded-lg text-ink hover:bg-cream transition-colors"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
       </div>
-
-      <!-- Mobile Menu Button -->
-      <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-700 hover:bg-white/50 focus:outline-none transition-colors" aria-label="Abrir menú">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-        </svg>
-      </button>
     </nav>
-  </div>
 
-  <!-- Mobile Menu Panel -->
-  <div id="mobile-menu" class="hidden md:hidden absolute top-24 left-4 right-4 z-40 glassmorphism rounded-2xl shadow-xl border border-white/35 p-6 animate-fade-in-up">
-    <div class="flex flex-col space-y-4">
-      <a href="#inicio" class="mobile-link font-semibold text-lg text-slate-800 hover:text-brand-blue px-3 py-2 rounded-lg hover:bg-white/40 transition-all">Inicio</a>
-      <a href="#productos" class="mobile-link font-semibold text-lg text-slate-800 hover:text-brand-blue px-3 py-2 rounded-lg hover:bg-white/40 transition-all">Productos</a>
-      <a href="#demostraciones" class="mobile-link font-semibold text-lg text-slate-800 hover:text-brand-blue px-3 py-2 rounded-lg hover:bg-white/40 transition-all flex items-center justify-between">
-        <span>Demostraciones en Video</span>
-        <span class="px-2 py-0.5 text-xs font-bold rounded-md bg-brand-red text-white">Nuevo</span>
-      </a>
-      <a href="#simulador" class="mobile-link font-semibold text-lg text-slate-800 hover:text-brand-blue px-3 py-2 rounded-lg hover:bg-white/40 transition-all">Simulador</a>
-      <a href="#contacto" class="mobile-link font-semibold text-lg text-slate-800 hover:text-brand-blue px-3 py-2 rounded-lg hover:bg-white/40 transition-all">Contacto</a>
-      <a href="#contacto" class="mobile-link inline-flex items-center justify-center w-full px-5 py-3 rounded-xl text-white font-medium bg-brand-blue hover:bg-brand-blue-dark transition-all duration-300 shadow-md">
-        Cotizar Ahora
-      </a>
+    <div
+      id="mobile-menu"
+      class="hidden lg:hidden mt-2 rounded-2xl bg-white border border-cream-dark shadow-xl p-4 animate-fade-in-up"
+    >
+      <div class="flex flex-col">
+        {links.map((l) => (
+          <a href={l.href} class="mobile-link px-3 py-3 rounded-lg font-semibold text-lg text-ink hover:bg-cream">
+            {l.label}
+          </a>
+        ))}
+        <a
+          href={quoteHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mobile-link mt-2 inline-flex justify-center px-5 py-3 rounded-xl bg-brand-red text-white font-semibold"
+        >
+          Cotizar ahora
+        </a>
+      </div>
     </div>
   </div>
 </header>
 
 <script>
-  // Dynamic header updates on scroll
-  const header = document.getElementById("main-header");
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 20) {
-      header?.classList.remove("py-5");
-      header?.classList.add("py-2");
-    } else {
-      header?.classList.remove("py-2");
-      header?.classList.add("py-5");
-    }
-  });
+  const nav = document.getElementById("main-nav");
+  const onScroll = () => {
+    nav?.classList.toggle("shadow-lg", window.scrollY > 20);
+    nav?.classList.toggle("shadow-ink/5", window.scrollY > 20);
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 
-  // Mobile menu toggle
   const menuBtn = document.getElementById("mobile-menu-btn");
   const mobileMenu = document.getElementById("mobile-menu");
-  const mobileLinks = document.querySelectorAll(".mobile-link");
 
-  const toggleMenu = () => {
-    mobileMenu?.classList.toggle("hidden");
+  const setMenu = (open: boolean) => {
+    mobileMenu?.classList.toggle("hidden", !open);
+    menuBtn?.setAttribute("aria-expanded", String(open));
   };
 
-  menuBtn?.addEventListener("click", toggleMenu);
-
-  mobileLinks.forEach(link => {
-    link.addEventListener("click", () => {
-      mobileMenu?.classList.add("hidden");
-    });
-  });
+  menuBtn?.addEventListener("click", () => setMenu(mobileMenu?.classList.contains("hidden") ?? false));
+  document.querySelectorAll(".mobile-link").forEach((link) => link.addEventListener("click", () => setMenu(false)));
 </script>
