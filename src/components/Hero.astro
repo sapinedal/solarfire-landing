@@ -85,6 +85,16 @@
                 d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
             </svg>
           </a>
+
+          <a
+            href="#demostraciones"
+            class="w-full sm:w-auto px-6 py-4 rounded-2xl bg-brand-red/10 hover:bg-brand-red/20 border border-brand-red/20 text-brand-red font-bold text-center transition-all duration-200 flex items-center justify-center space-x-2"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            <span>Ver Videos Reales</span>
+          </a>
         </div>
 
         <!-- Micro stats / Highlights -->
@@ -118,25 +128,84 @@
         </div>
       </div>
 
-      <!-- Graphical placeholder product representation -->
+      <!-- Live Video / Product Feature Card -->
       <div class="mt-16 lg:mt-0 lg:col-span-5 flex justify-center">
-        <div class="relative w-full max-w-[480px]">
+        <div class="relative w-full max-w-[420px]">
           <!-- Glow behind mockup -->
           <div
-            class="absolute -inset-4 bg-linear-to-tr from-brand-red/10 to-brand-blue/10 rounded-3xl blur-3xl opacity-60"
+            class="absolute -inset-4 bg-linear-to-tr from-brand-red/20 via-brand-orange/15 to-brand-blue/20 rounded-3xl blur-3xl opacity-70"
           >
           </div>
 
-          <!-- Mockup placeholder container -->
-          <div
-            class="relative bg-white p-3.5 rounded-3xl border border-slate-100 shadow-2xl flex flex-col items-center"
+          <!-- Video Showcase Card Container -->
+          <a 
+            href="#demostraciones"
+            class="group relative bg-white p-3 rounded-3xl border border-slate-200/80 shadow-2xl flex flex-col items-center overflow-hidden block transition-transform duration-300 hover:scale-[1.02]"
+            aria-label="Ver demostración en video de la línea RUDO"
           >
-            <img
-              src="https://placehold.co/600x500/f0f4ff/1c3d5a?text=Gama+de+Productos+Solar+Fire+600x500"
-              alt="Gama de Productos Solar Fire"
-              class="w-full h-auto rounded-2xl object-cover shadow-sm bg-slate-100"
-            />
-          </div>
+            <!-- Video preview frame -->
+            <div class="relative w-full aspect-4/5 rounded-2xl overflow-hidden bg-slate-900">
+              <video
+                src="/video-2.mp4"
+                poster="/video-2-poster.png"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              >
+              </video>
+
+              <!-- Gradient overlay for text legibility -->
+              <div class="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-black/30 pointer-events-none"></div>
+
+              <!-- Top badges -->
+              <div class="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none">
+                <span class="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-black/60 backdrop-blur-md text-white border border-white/20">
+                  Línea RUDO
+                </span>
+                <span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-brand-red text-white flex items-center space-x-1.5 shadow-lg">
+                  <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+                  <span>En Acción</span>
+                </span>
+              </div>
+
+              <!-- Center Play Badge -->
+              <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div class="w-16 h-16 rounded-full bg-brand-red/90 group-hover:bg-brand-red text-white flex items-center justify-center shadow-2xl backdrop-blur-xs transform transition-transform duration-300 group-hover:scale-115 border-2 border-white/40">
+                  <svg class="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Bottom captions -->
+              <div class="absolute bottom-4 left-4 right-4 text-white pointer-events-none space-y-1">
+                <p class="text-xs font-bold text-brand-yellow uppercase tracking-wider">Demostración en Vivo</p>
+                <h3 class="text-lg font-bold font-display leading-tight drop-shadow-md">
+                  Desincrustante Alcalino Nivel 4
+                </h3>
+                <p class="text-xs text-slate-200 line-clamp-1">
+                  Efecto inmediato en acero inoxidable y superficies industriales.
+                </p>
+              </div>
+            </div>
+
+            <!-- Card Bottom Bar -->
+            <div class="w-full px-3 py-2.5 flex items-center justify-between text-xs font-semibold text-slate-600">
+              <span class="flex items-center space-x-1 text-brand-blue">
+                <svg class="w-4 h-4 text-brand-red" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span>3 videos de pruebas reales</span>
+              </span>
+              <span class="text-brand-red group-hover:underline flex items-center space-x-1 font-bold">
+                <span>Ver todos</span>
+                <span>&rarr;</span>
+              </span>
+            </div>
+          </a>
         </div>
       </div>
     </div>

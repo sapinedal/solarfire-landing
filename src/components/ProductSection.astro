@@ -5,8 +5,44 @@ import ProductCard from "./ProductCard.astro";
 // Product Catalog Data
 const products = [
   {
+    title: "RUDO Limpiador de Juntas",
+    category: "Línea RUDO" as const,
+    description: "Fórmula potente de acción instantánea para recuperar juntas de baldosas y cerámicas manchadas de suciedad y moho.",
+    size: "1.000 ml / Aspersor",
+    colorClass: "bg-brand-red",
+    liquidColor: "bg-red-500",
+    invimaCode: "NSOH08420-19CO",
+    features: ["Espuma activa profunda", "Recupera el color original", "Demostración en video"],
+    imageSrc: "/video-1-poster.png",
+    videoLink: "#demostraciones"
+  },
+  {
+    title: "RUDO Desincrustante Alcalino Nivel 4",
+    category: "Línea RUDO" as const,
+    description: "Máxima potencia desincrustante formulada para remover quemaduras severas, óxido y residuos en acero inoxidable y equipos.",
+    size: "1.000 ml / 3.800 ml",
+    colorClass: "bg-brand-blue-dark",
+    liquidColor: "bg-blue-600",
+    invimaCode: "NSOH08420-19CO",
+    features: ["Nivel 4 Máxima Potencia", "Brillo en acero inoxidable", "Demostración en video"],
+    imageSrc: "/video-2-poster.png",
+    videoLink: "#demostraciones"
+  },
+  {
+    title: "RUDO Desengrasante Pesado Industrial",
+    category: "Línea RUDO" as const,
+    description: "Desengrasante ultra concentrado para disolver grasas carbonizadas y aceites en aspas de ventilación, campanas y motores.",
+    size: "1 Galón / Litro",
+    colorClass: "bg-brand-orange",
+    liquidColor: "bg-amber-500",
+    invimaCode: "NSOH08420-19CO",
+    features: ["Disuelve grasa quemada", "Acción rápida sin frotar de más", "Demostración en video"],
+    imageSrc: "/video-3-poster.png",
+    videoLink: "#demostraciones"
+  },
+  {
     title: "Detergente Líquido Ropa Activa",
-    category: "Hogar",
+    category: "Hogar" as const,
     description: "Fórmula de alta eficiencia para todo tipo de ropa. Remueve manchas difíciles protegiendo los tejidos y colores de tus prendas.",
     size: "1 Galón / 20 L",
     colorClass: "bg-brand-blue",
@@ -16,7 +52,7 @@ const products = [
   },
   {
     title: "Lavavajillas Líquido Concentrado",
-    category: "Hogar",
+    category: "Hogar" as const,
     description: "Arranca la grasa más pesada al instante en ollas y vajillas. Fórmula con pH balanceado que protege y suaviza tus manos.",
     size: "Litro / Galón",
     colorClass: "bg-brand-orange",
@@ -26,7 +62,7 @@ const products = [
   },
   {
     title: "Limpiador Multiusos Desinfectante",
-    category: "Hogar",
+    category: "Hogar" as const,
     description: "Limpia, aromatiza y desinfecta todo tipo de pisos y superficies en una sola pasada. Fragancia de lavanda de larga duración.",
     size: "1 Galón / Litro",
     colorClass: "bg-brand-red",
@@ -36,7 +72,7 @@ const products = [
   },
   {
     title: "Amonio Cuaternario 5G Concentrado",
-    category: "Desinfección",
+    category: "Desinfección" as const,
     description: "Desinfectante de quinta generación ideal para la sanitización de áreas comunes, clínicas y plantas de procesamiento de alimentos.",
     size: "1 Galón / 20 L",
     colorClass: "bg-brand-blue-dark",
@@ -46,7 +82,7 @@ const products = [
   },
   {
     title: "Alcohol Antiséptico al 70%",
-    category: "Desinfección",
+    category: "Desinfección" as const,
     description: "Alcohol antiséptico para desinfección inmediata de manos y superficies de contacto frecuente. Secado rápido sin residuos.",
     size: "Litro / Galón",
     colorClass: "bg-brand-blue",
@@ -56,7 +92,7 @@ const products = [
   },
   {
     title: "Desengrasante Industrial Heavy Duty",
-    category: "Institucional",
+    category: "Institucional" as const,
     description: "Fórmula de alta alcalinidad para disolver grasas, aceites y carbón en cocinas industriales, talleres y campanas extractoras.",
     size: "1 Galón / 20 L",
     colorClass: "bg-brand-orange",
@@ -66,7 +102,7 @@ const products = [
   },
   {
     title: "Jabón Líquido Antibacterial para Manos",
-    category: "Institucional",
+    category: "Institucional" as const,
     description: "Limpieza profunda con agentes humectantes. Elimina microorganismos patógenos previniendo la resequedad de la piel.",
     size: "1 Galón / Litro",
     colorClass: "bg-brand-yellow",
@@ -76,7 +112,7 @@ const products = [
   },
   {
     title: "Champú Autobrillante con Cera",
-    category: "Automotriz",
+    category: "Automotriz" as const,
     description: "Shampoo concentrado de alta espuma para lavado de vehículos. Remueve suciedad vial dejando una película brillante protectora UV.",
     size: "1 Galón / Litro",
     colorClass: "bg-brand-red",
@@ -86,7 +122,7 @@ const products = [
   }
 ];
 
-const categories = ["Todos", "Hogar", "Institucional", "Desinfección", "Automotriz"];
+const categories = ["Todos", "Línea RUDO", "Hogar", "Institucional", "Desinfección", "Automotriz"];
 ---
 
 <section id="productos" class="py-24 bg-white relative">
