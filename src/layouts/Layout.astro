@@ -1,18 +1,18 @@
 ---
 import "../styles/global.css";
 import favicon from "../assets/logo-solar-fire.ico";
-import ogImage from "../assets/banner_products.webp";
-import { whatsappLink } from "../data/products";
+import { getPagina } from "../lib/contenido";
+import { whatsappLink } from "../lib/whatsapp";
+
+const ajustes = await getPagina("ajustes");
+const ogImage = ajustes.ogImage;
 
 interface Props {
   title?: string;
   description?: string;
 }
 
-const { 
-  title = "Solar Fire - Productos de Limpieza, Aseo y Desinfección INVIMA", 
-  description = "Fabricante líder de productos para la limpieza, el aseo y la desinfección en Itagüí, Antioquia. Fórmulas de alta calidad con certificación oficial INVIMA para el hogar y la industria." 
-} = Astro.props;
+const { title = ajustes.seoTitle, description = ajustes.seoDescription } = Astro.props;
 ---
 
 <!doctype html>
@@ -55,7 +55,7 @@ const {
 
     <!-- Floating WhatsApp Widget -->
     <a
-      href={whatsappLink("Hola Solar Fire, vengo de la página web y quiero hacer una consulta comercial.")}
+      href={whatsappLink(ajustes.whatsappNumber, ajustes.floatingMessage)}
       target="_blank"
       rel="noopener noreferrer"
       class="fixed bottom-6 right-6 z-50 flex items-center group bg-emerald-500 hover:bg-emerald-600 text-white p-3.5 rounded-full shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95"
@@ -63,7 +63,7 @@ const {
     >
       <!-- Hidden label that reveals on hover -->
       <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-in-out whitespace-nowrap font-bold text-sm mr-0 group-hover:mr-2 select-none">
-        Chatea con nosotros
+        {ajustes.floatingLabel}
       </span>
       <svg
         class="h-6 w-6 shrink-0"

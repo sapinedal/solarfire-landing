@@ -25,3 +25,4 @@ pnpm-debug.log*
 
 # copias originales de imágenes (JPEG) antes de optimizar
 _originales/
+.vercel

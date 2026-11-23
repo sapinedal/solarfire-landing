@@ -1,0 +1,21 @@
+eyebrow: Quiénes somos
+title: Fabricamos en Colombia, con calidad certificada
+description: En **Solar Fire S.A.S.** fabricamos cada producto bajo estrictas normas de control de calidad e higiene, para que limpiar y desinfectar sea más fácil, seguro y eficiente.
+badgeLogo: ../../assets/paginas/nosotros/logo-invima.png
+badgeTitle: Concepto sanitario favorable
+badgeSubtitle: Hecho en Itagüí, Antioquia
+pillars:
+  - icon: escudo
+    title: Concepto sanitario INVIMA
+    text: Condiciones sanitarias y capacidad de fabricación para productos de higiene doméstica e industrial.
+  - icon: planeta
+    title: Fórmulas biodegradables
+    text: Tensoactivos amigables con el medio ambiente, sin sacrificar rendimiento.
+  - icon: fabrica
+    title: Directo de fábrica
+    text: Planta en Itagüí con venta mayorista y al detal para empresas, colegios, conjuntos y hogares.
+  - icon: camion
+    title: Despachos nacionales
+    text: Enviamos a toda Colombia y te asesoramos con fichas técnicas de cada producto.
+banner: ../../assets/paginas/nosotros/banner.webp
+bannerAlt: 'Línea de aseo BIO de Solar Fire: calidad, rendimiento y cuidado para tu entorno'

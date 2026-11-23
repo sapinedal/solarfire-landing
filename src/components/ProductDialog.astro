@@ -1,14 +1,16 @@
 ---
 // ProductDialog.astro — ficha completa del producto en un <dialog> nativo
 import { Image } from "astro:assets";
-import type { Product } from "../data/products";
-import { whatsappLink, productQuoteMessage } from "../data/products";
+import type { Producto } from "../lib/contenido";
+import { whatsappLink, productQuoteMessage, type PlantillaCotizacion } from "../lib/whatsapp";
 
 interface Props {
-  product: Product;
+  product: Producto;
+  quote: { number: string; plantilla: PlantillaCotizacion };
+  disclaimer?: string;
 }
 
-const { product } = Astro.props;
+const { product, quote, disclaimer } = Astro.props;
 const check = "M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z";
 ---
 
@@ -24,7 +26,7 @@ const check = "M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.
         <div class="absolute inset-8 sun-glow" aria-hidden="true"></div>
         {product.images.map((img, i) => (
           <Image
-            src={img.src}
+            src={img.image}
             alt={img.alt}
             widths={[320, 480, 640, 900]}
             sizes="(min-width: 768px) 480px, 90vw"
@@ -44,7 +46,7 @@ const check = "M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.
               aria-pressed={i === 0 ? "true" : "false"}
               class="w-16 h-16 rounded-xl border-2 border-transparent aria-pressed:border-brand-blue bg-white p-1 overflow-hidden transition-colors"
             >
-              <Image src={img.src} alt="" width={128} class="w-full h-full object-contain" loading="lazy" />
+              <Image src={img.image} alt="" width={128} class="w-full h-full object-contain" loading="lazy" />
             </button>
           ))}
         </div>
@@ -73,18 +75,18 @@ const check = "M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.
         {product.description.map((p) => <p>{p}</p>)}
       </div>
 
-      {product.variants && (
+      {product.variantsLabel && product.variants.length > 0 && (
         <div>
-          <h4 class="text-sm font-bold text-ink mb-2">{product.variants.label}</h4>
+          <h4 class="text-sm font-bold text-ink mb-2">{product.variantsLabel}</h4>
           <ul class="flex flex-wrap gap-2">
-            {product.variants.items.map((v) => (
+            {product.variants.map((v) => (
               <li class="px-3 py-1.5 rounded-lg bg-cream border border-cream-dark text-sm font-medium">{v}</li>
             ))}
           </ul>
         </div>
       )}
 
-      {product.benefits && (
+      {product.benefits.length > 0 && (
         <div>
           <h4 class="text-sm font-bold text-ink mb-2">Beneficios</h4>
           <ul class="space-y-1.5">
@@ -98,6 +100,7 @@ const check = "M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.
         </div>
       )}
 
+      {product.applications.length > 0 && (
       <div>
         <h4 class="text-sm font-bold text-ink mb-2">Aplicaciones</h4>
         <ul class="grid sm:grid-cols-2 gap-x-4 gap-y-1.5">
@@ -109,6 +112,7 @@ const check = "M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.
           ))}
         </ul>
       </div>
+      )}
 
       {product.usage && (
         <div class="rounded-2xl bg-brand-blue-light p-4">
@@ -117,21 +121,21 @@ const check = "M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.
         </div>
       )}
 
-      <blockquote class="border-l-4 border-brand-sun pl-4 font-display text-lg text-ink italic">
-        “{product.quote}”
-      </blockquote>
+      {product.quote && (
+        <blockquote class="border-l-4 border-brand-sun pl-4 font-display text-lg text-ink italic">
+          “{product.quote}”
+        </blockquote>
+      )}
 
       <a
-        href={whatsappLink(productQuoteMessage(product))}
+        href={whatsappLink(quote.number, productQuoteMessage(product, quote.plantilla))}
         target="_blank"
         rel="noopener noreferrer"
         class="flex w-full items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-brand-red hover:bg-brand-red-dark text-white font-semibold transition-colors"
       >
         Cotizar {product.name} por WhatsApp
       </a>
-      <p class="text-xs text-slate-400">
-        Mantener fuera del alcance de los niños. Usar siguiendo las indicaciones de la etiqueta.
-      </p>
+      {disclaimer && <p class="text-xs text-slate-400">{disclaimer}</p>}
     </div>
   </div>
 </dialog>

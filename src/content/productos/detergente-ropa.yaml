@@ -1,0 +1,26 @@
+name: "Detergente Líquido para Ropa"
+order: 40
+tagline: "Biodegradable, con bicarbonato y blanqueador óptico."
+categories:
+  - "Hogar"
+images:
+  - image: ../../assets/productos/detergente-ropa/detergente-2.webp
+    alt: "Detergente líquido Solar Fire en botella"
+  - image: ../../assets/productos/detergente-ropa/detergente-1.webp
+    alt: "Detergente líquido Solar Fire en galón"
+  - image: ../../assets/productos/detergente-ropa/detergente-3.webp
+    alt: "Detergente líquido Solar Fire en bidón"
+description:
+  - "Detergente líquido biodegradable de alto rendimiento para una limpieza profunda en prendas blancas y de color. Su fórmula concentrada actúa sobre la suciedad y las manchas de uso diario."
+  - "Enriquecido con blanqueador óptico, realza la luminosidad de las prendas blancas y revitaliza los colores, dejando un agradable aroma de frescura duradera."
+applications:
+  - "Prendas blancas y de color"
+  - "Hogares"
+  - "Lavanderías"
+  - "Hoteles e instituciones"
+variantsLabel: "Presentaciones"
+variants:
+  - "Botella"
+  - "Galón"
+  - "Bidón"
+quote: "Más limpieza, más frescura y más rendimiento en cada lavado."

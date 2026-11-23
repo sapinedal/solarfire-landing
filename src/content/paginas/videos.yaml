@@ -1,0 +1,43 @@
+eyebrow: Línea RUDO · Uso profesional
+title: Míralo funcionar, sin trucos
+description: Pruebas reales de nuestra línea especializada **RUDO** en juntas, acero inoxidable y grasa industrial.
+items:
+  - title: RUDO Limpiador de Juntas
+    subtitle: Acción penetrante que disuelve sarro, hongos y mugre acumulada en juntas de baldosas al instante.
+    tag: Pisos & Juntas
+    category: Línea RUDO
+    video: /videos/video-1.mp4
+    poster: /videos/video-1-poster.webp
+    benefits:
+      - Espuma activa instantánea
+      - Sin dañar el esmalte de la baldosa
+      - Fácil aplicación directa
+    buttonLabel: Cotizar este producto
+    whatsappMessage: Hola Solar Fire, vi el video del Limpiador de Juntas RUDO y deseo cotizarlo.
+  - title: RUDO Desincrustante Alcalino
+    subtitle: Fórmula Nivel 4 de máxima potencia para devolver el brillo original a superficies metálicas y acero.
+    tag: Acero Inoxidable
+    category: Nivel 4 Máxima Potencia
+    video: /videos/video-2.mp4
+    poster: /videos/video-2-poster.webp
+    benefits:
+      - Arranca óxido y quemaduras
+      - Brillo espejo en acero inoxidable
+      - Alto rendimiento concentrado
+    buttonLabel: Cotizar este producto
+    whatsappMessage: Hola Solar Fire, vi el video del Desincrustante Alcalino RUDO Nivel 4 y deseo cotizarlo.
+  - title: RUDO Desengrasante Pesado
+    subtitle: Desprende grasa adherida y aceites industriales en aspas, campanas extractoras y maquinaria.
+    tag: Desengrase Extremo
+    category: Uso Industrial & Taller
+    video: /videos/video-3.mp4
+    poster: /videos/video-3-poster.webp
+    benefits:
+      - Disuelve grasa carbonizada
+      - Rápida acción por aspersión
+      - Apto para campanas y motores
+    buttonLabel: Cotizar este producto
+    whatsappMessage: Hola Solar Fire, vi el video del Desengrasante Pesado RUDO y deseo solicitar una cotización.
+calloutTitle: ¿Necesitas asesoría técnica para tu empresa?
+calloutText: Te enviamos fichas técnicas y te ayudamos a elegir el producto ideal.
+calloutButton: Hablar con un especialista

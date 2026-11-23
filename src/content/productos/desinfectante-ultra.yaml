@@ -1,0 +1,31 @@
+name: "Desinfectante Ultra"
+order: 20
+tagline: "Alcohol + amonio cuaternario de 5.ª generación. Amplio espectro."
+categories:
+  - "Desinfección"
+  - "Hogar"
+  - "Industrial"
+images:
+  - image: ../../assets/productos/desinfectante-ultra/desinfectante-ultra-3.webp
+    alt: "Desinfectante Ultra Solar Fire en atomizador"
+  - image: ../../assets/productos/desinfectante-ultra/desinfectante-ultra-2.webp
+    alt: "Desinfectante Ultra Solar Fire en galón"
+  - image: ../../assets/productos/desinfectante-ultra/desinfectante-ultra-1.webp
+    alt: "Desinfectante Ultra Solar Fire en bidón"
+description:
+  - "Potente desinfectante de amplio espectro formulado con una combinación de alcohol etílico y amonio cuaternario de quinta generación, para una limpieza y desinfección eficaz en una amplia variedad de superficies."
+  - "Combina la rápida acción del alcohol con el poder residual de los amonios cuaternarios, ayudando a controlar microorganismos en entornos domésticos, comerciales, industriales e institucionales."
+benefits:
+  - "Alcohol + amonio cuaternario de quinta generación"
+  - "Acción rápida y eficaz"
+  - "Limpia, desinfecta y ayuda a controlar olores"
+  - "Aplicación por aspersión o paño"
+  - "Uso doméstico, institucional e industrial"
+applications:
+  - "Pisos, paredes y techos"
+  - "Baños y sanitarios"
+  - "Cocinas y áreas de preparación"
+  - "Utensilios y equipos"
+  - "Oficinas e instituciones educativas"
+  - "Ambientes de alto tránsito"
+quote: "La máxima protección para sus espacios en una sola aplicación."

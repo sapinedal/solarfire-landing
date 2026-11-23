@@ -1,14 +1,15 @@
 ---
 // ProductCard.astro
 import { Image } from "astro:assets";
-import type { Product } from "../data/products";
-import { whatsappLink, productQuoteMessage } from "../data/products";
+import type { Producto } from "../lib/contenido";
+import { whatsappLink, productQuoteMessage, type PlantillaCotizacion } from "../lib/whatsapp";
 
 interface Props {
-  product: Product;
+  product: Producto;
+  quote: { number: string; plantilla: PlantillaCotizacion };
 }
 
-const { product } = Astro.props;
+const { product, quote } = Astro.props;
 const cover = product.images[0];
 ---
 
@@ -24,7 +25,7 @@ const cover = product.images[0];
   >
     <div class="absolute inset-x-8 bottom-6 top-1/3 sun-glow opacity-0 group-hover:opacity-100 transition-opacity duration-500" aria-hidden="true"></div>
     <Image
-      src={cover.src}
+      src={cover.image}
       alt={cover.alt}
       widths={[320, 480, 640]}
       sizes="(min-width: 1024px) 380px, (min-width: 640px) 45vw, 90vw"
@@ -46,11 +47,11 @@ const cover = product.images[0];
     <h3 class="font-display font-bold text-xl text-ink leading-tight">{product.name}</h3>
     <p class="mt-2 text-sm text-slate-600 leading-relaxed">{product.tagline}</p>
 
-    {product.variants && (
+    {product.variantsLabel && product.variants.length > 0 && (
       <p class="mt-4 text-xs text-slate-500">
-        <span class="font-semibold text-slate-700">{product.variants.label}:</span>{" "}
-        {product.variants.items.slice(0, 3).join(" · ")}
-        {product.variants.items.length > 3 && ` +${product.variants.items.length - 3}`}
+        <span class="font-semibold text-slate-700">{product.variantsLabel}:</span>{" "}
+        {product.variants.slice(0, 3).join(" · ")}
+        {product.variants.length > 3 && ` +${product.variants.length - 3}`}
       </p>
     )}
 
@@ -63,7 +64,7 @@ const cover = product.images[0];
         Ver ficha
       </button>
       <a
-        href={whatsappLink(productQuoteMessage(product))}
+        href={whatsappLink(quote.number, productQuoteMessage(product, quote.plantilla))}
         target="_blank"
         rel="noopener noreferrer"
         class="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl bg-brand-red hover:bg-brand-red-dark text-white text-sm font-semibold transition-colors"

@@ -1,0 +1,34 @@
+product: limpia-pisos-desinfectante
+eyebrow: Producto estrella
+title: Limpia Pisos 3 en 1, elige tu aroma
+description: Fórmula biodegradable que deja tus pisos impecables y tus espacios con fragancia de larga duración.
+features:
+  - title: Limpia
+    text: Remueve la suciedad cotidiana.
+  - title: Desinfecta
+    text: Amonio cuaternario de 5.ª generación.
+  - title: Da brillo
+    text: Brillo progresivo con el uso.
+aromas:
+  - name: Citronela
+    color: '#ef4b2b'
+    image: ../../assets/paginas/aromas/limpia-pisos-citronela.webp
+    note: Fresco y cítrico, ideal para áreas comunes.
+  - name: Brisa Fresca
+    color: '#1e7fe0'
+    image: ../../assets/paginas/aromas/limpia-pisos-brisa-fresca.webp
+    note: Sensación de aire limpio en baños y cocinas.
+  - name: Lavanda
+    color: '#7b3fc4'
+    image: ../../assets/paginas/aromas/limpia-pisos-lavanda.webp
+    note: Floral y relajante para todo el hogar.
+  - name: Pinol
+    color: '#1f6b3a'
+    image: ../../assets/paginas/aromas/limpia-pisos-pinol.webp
+    note: Aroma clásico a limpio, intenso y duradero.
+otherAromas:
+  - Floral
+  - Canela
+  - Fusión
+  - Talco
+ctaLabel: Cotizar aroma

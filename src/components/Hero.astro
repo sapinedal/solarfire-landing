@@ -1,14 +1,12 @@
 ---
 // Hero.astro
 import { Image } from "astro:assets";
-import heroImage from "../assets/limpiapisos-desinfectante/limpia-pisos-juntos.webp";
-import { whatsappLink } from "../data/products";
+import { getPagina } from "../lib/contenido";
+import { whatsappLink } from "../lib/whatsapp";
 
-const highlights = [
-  { value: "INVIMA", label: "Concepto sanitario" },
-  { value: "Bio", label: "Fórmulas biodegradables" },
-  { value: "Directo", label: "De fábrica a tu negocio" },
-];
+const { whatsappNumber } = await getPagina("ajustes");
+const hero = await getPagina("hero");
+const { highlights } = hero;
 ---
 
 <section id="inicio" class="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
@@ -16,12 +14,12 @@ const highlights = [
     <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
       <!-- Copy -->
       <div class="lg:col-span-6 text-center lg:text-left">
-        <p class="eyebrow">Fabricantes en Itagüí, Antioquia</p>
+        <p class="eyebrow">{hero.eyebrow}</p>
 
         <h1 class="mt-5 font-display font-extrabold text-[2.6rem] leading-[1.05] sm:text-6xl lg:text-[4.25rem] text-brand-blue tracking-tight">
-          Limpieza y protección
+          {hero.title}{" "}
           <span class="relative inline-block text-brand-red">
-            que se nota
+            {hero.titleHighlight}
             <svg class="absolute left-0 -bottom-2 w-full h-3 text-brand-sun" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true">
               <path d="M2 9 Q 50 2 100 7 T 198 5" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" />
             </svg>
@@ -29,8 +27,7 @@ const highlights = [
         </h1>
 
         <p class="mt-7 text-lg md:text-xl text-slate-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-          Desinfectantes, limpia pisos, lavaloza, detergentes y desengrasantes de alto rendimiento para
-          hogares, empresas e instituciones. Precio de fábrica y despachos a toda Colombia.
+          {hero.description}
         </p>
 
         <div class="mt-9 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3">
@@ -38,13 +35,13 @@ const highlights = [
             href="#productos"
             class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-brand-blue hover:bg-brand-blue-dark text-white font-semibold transition-colors"
           >
-            Ver productos
+            {hero.primaryCta}
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4 h-4" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3" />
             </svg>
           </a>
           <a
-            href={whatsappLink("Hola Solar Fire, vengo de la página web y quiero una cotización.")}
+            href={whatsappLink(whatsappNumber, hero.whatsappMessage)}
             target="_blank"
             rel="noopener noreferrer"
             class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 rounded-2xl bg-white border border-cream-dark hover:border-brand-blue/30 text-ink font-semibold transition-colors"
@@ -52,7 +49,7 @@ const highlights = [
             <svg class="w-5 h-5 text-emerald-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.2 8.2 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.19 8.19 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.86-.87 2.07 0 1.22.89 2.39 1 2.56.14.17 1.76 2.67 4.25 3.73.59.27 1.05.42 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.27-.25-.14-1.47-.74-1.69-.82-.23-.08-.37-.12-.56.12-.16.25-.64.81-.78.97-.15.17-.29.19-.53.07-.26-.13-1.06-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.12-.24-.01-.39.11-.5.11-.11.27-.29.37-.44.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.11-.56-1.35-.77-1.84-.2-.48-.4-.42-.56-.43-.14 0-.3-.01-.47-.01" />
             </svg>
-            Cotizar por WhatsApp
+            {hero.secondaryCta}
           </a>
         </div>
 
@@ -78,18 +75,28 @@ const highlights = [
 
         <div class="relative rounded-[2rem] bg-white border border-cream-dark shadow-2xl shadow-brand-blue/10 p-4 sm:p-6">
           <Image
-            src={heroImage}
-            alt="Línea Limpia Pisos Solar Fire en seis aromas"
+            src={hero.image}
+            alt={hero.imageAlt}
             widths={[480, 720, 960, 1280]}
             sizes="(min-width: 1024px) 600px, 92vw"
             loading="eager"
             fetchpriority="high"
             class="w-full h-auto rounded-2xl mix-blend-multiply"
           />
-          <div class="absolute -bottom-5 left-6 sm:left-8 flex flex-wrap gap-2">
-            <span class="px-3.5 py-2 rounded-full bg-brand-blue text-white text-xs font-semibold shadow-lg">Amonio cuaternario 5.ª gen.</span>
-            <span class="px-3.5 py-2 rounded-full bg-brand-sun text-ink text-xs font-semibold shadow-lg">8 aromas</span>
-          </div>
+          {hero.badges.length > 0 && (
+            <div class="absolute -bottom-5 left-6 sm:left-8 flex flex-wrap gap-2">
+              {hero.badges.map((badge, i) => (
+                <span
+                  class:list={[
+                    "px-3.5 py-2 rounded-full text-xs font-semibold shadow-lg",
+                    i % 2 === 0 ? "bg-brand-blue text-white" : "bg-brand-sun text-ink",
+                  ]}
+                >
+                  {badge}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

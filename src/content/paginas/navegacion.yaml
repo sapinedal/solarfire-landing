@@ -1,0 +1,13 @@
+links:
+  - label: Productos
+    href: '#productos'
+  - label: Limpia Pisos
+    href: '#aromas'
+  - label: Línea RUDO
+    href: '#demostraciones'
+  - label: Nosotros
+    href: '#nosotros'
+  - label: Contacto
+    href: '#contacto'
+ctaLabel: Cotizar ahora
+ctaMessage: Hola Solar Fire, vengo de la página web y quiero cotizar productos.
