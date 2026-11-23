@@ -1,4 +1,7 @@
-description: '**Solar Fire S.A.S.** es un fabricante colombiano de productos químicos de limpieza, higiene y desinfección doméstica e industrial. Comprometidos con el desarrollo sostenible y la bioseguridad del país.'
+description: >-
+  **Solar Fire S.A.S.** es un fabricante colombiano de productos químicos de
+  limpieza, higiene y desinfección doméstica e industrial. Comprometidos con el
+  desarrollo sostenible y la bioseguridad del país.
 note: Concepto sanitario y capacidad de fabricación avalada por el **INVIMA**.
 links:
   - label: Inicio
@@ -7,7 +10,7 @@ links:
     href: '#productos'
   - label: Limpia Pisos 3 en 1
     href: '#aromas'
-  - label: Línea RUDO en video
+  - label: Línea RUDO
     href: '#demostraciones'
   - label: Nosotros & INVIMA
     href: '#nosotros'
