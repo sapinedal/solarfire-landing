@@ -61,9 +61,10 @@ const enlaces = (label: string) =>
 // --- Configuración -----------------------------------------------------------
 
 export default config({
-  storage: import.meta.env.PROD
-    ? { kind: "github", repo: "sapinedal/solarfire-landing" }
-    : { kind: "local" },
+  // Local: guarda en los archivos del proyecto.
+  // Producción: Keystatic Cloud (login de editores + commits a GitHub, sin claves en Vercel).
+  storage: import.meta.env.PROD ? { kind: "cloud" } : { kind: "local" },
+  cloud: { project: "devteam/solarfire-landing" },
 
   ui: {
     brand: { name: "Solar Fire" },

@@ -33,26 +33,16 @@ Todo queda en Git, así que cualquier cambio se puede revisar o deshacer.
 ## Cómo funciona en cada entorno
 
 - **Local (`npm run dev`)**: el panel guarda directo en los archivos del proyecto.
-- **Producción (Vercel)**: el panel guarda haciendo un *commit* en GitHub
-  (`sapinedal/solarfire-landing`) y Vercel vuelve a publicar la web solo (≈1 min).
+- **Producción (Vercel)**: el panel usa [Keystatic Cloud](https://keystatic.cloud)
+  (proyecto `devteam/solarfire-landing`). Los editores inician sesión allí, cada
+  guardado hace un *commit* en GitHub y Vercel vuelve a publicar la web solo (≈1 min).
 
-### Configurar el panel en producción (una sola vez)
+### Dar acceso a un editor
 
-1. Crea la GitHub App de Keystatic: en local, cambia temporalmente `storage` en
-   `keystatic.config.ts` a `{ kind: "github", repo: "sapinedal/solarfire-landing" }`,
-   ejecuta `npm run dev`, abre `/keystatic` y sigue el asistente. Al terminar crea un
-   `.env` con:
-   ```
-   KEYSTATIC_GITHUB_CLIENT_ID=…
-   KEYSTATIC_GITHUB_CLIENT_SECRET=…
-   KEYSTATIC_SECRET=…
-   PUBLIC_KEYSTATIC_GITHUB_APP_SLUG=…
-   ```
-   Luego deja `storage` como estaba (el `.env` no se sube a Git).
-2. Copia esas 4 variables en Vercel → *Project → Settings → Environment Variables*.
-3. En la GitHub App, agrega como *Callback URL*
-   `https://<tu-dominio>/api/keystatic/github/oauth/callback`.
-4. Instala la GitHub App en el repositorio y da acceso de escritura a quien vaya a editar.
+En https://keystatic.cloud → proyecto `solarfire-landing` → invita a la persona por
+correo (el plan gratis permite hasta 3 usuarios). No necesita cuenta de GitHub.
+
+Si cambia el dominio de la web, agrégalo en *Project URLs* del proyecto en Keystatic Cloud.
 
 ## Comandos
 
