@@ -1,25 +1,34 @@
-name: "Desengrasante Industrial"
+name: Desengrasante Industrial
 order: 50
-tagline: "Remueve grasas medias y suciedad adherida en cocinas y talleres."
+tagline: Remueve grasas medias y suciedad adherida en cocinas y talleres...
 categories:
-  - "Cocina"
-  - "Industrial"
+  - Cocina
+  - Industrial
 images:
-  - image: ../../assets/productos/desengrasante-industrial/desengrasante-1.webp
-    alt: "Desengrasante Industrial Solar Fire en galón"
+  - image: ../../assets/productos/desengrasante-industrial/images/0/image.webp
+    alt: Desengrasante Industrial Solar Fire en galón
 description:
-  - "Desengrasante de alto rendimiento formulado para la remoción eficaz de grasas medias, aceites, suciedad adherida y residuos orgánicos en una amplia variedad de superficies."
-  - "Recomendado para cocinas, hornos, parrillas, campanas extractoras, baldosas, pisos, frigoríficos, maquinaria, motores y filtros."
+  - >-
+    Desengrasante de alto rendimiento formulado para la remoción eficaz de
+    grasas medias, aceites, suciedad adherida y residuos orgánicos en una amplia
+    variedad de superficies. samuel
+  - >-
+    Recomendado para cocinas, hornos, parrillas, campanas extractoras, baldosas,
+    pisos, frigoríficos, maquinaria, motores y filtros.
 benefits:
-  - "Alto poder detergente y desengrasante"
-  - "Fácil aplicación y rápida acción"
-  - "Ideal para mantenimiento preventivo"
-  - "Versátil en múltiples superficies lavables"
+  - Alto poder detergente y desengrasante
+  - Fácil aplicación y rápida acción
+  - Ideal para mantenimiento preventivo
+  - Versátil en múltiples superficies lavables
 applications:
-  - "Cocinas industriales y domésticas"
-  - "Restaurantes"
-  - "Campanas, parrillas y hornos"
-  - "Talleres y zonas de mantenimiento"
-  - "Equipos y maquinaria"
-usage: "Aplicar directamente sobre la superficie o diluir según el nivel de suciedad. Dejar actuar unos minutos, frotar si es necesario y enjuagar con abundante agua."
-quote: "Más limpieza, menos esfuerzo."
+  - Cocinas industriales y domésticas
+  - Restaurantes
+  - Campanas, parrillas y hornos
+  - Talleres y zonas de mantenimiento
+  - Equipos y maquinaria
+variants: []
+usage: >-
+  Aplicar directamente sobre la superficie o diluir según el nivel de suciedad.
+  Dejar actuar unos minutos, frotar si es necesario y enjuagar con abundante
+  agua.
+quote: Más limpieza, menos esfuerzo.
