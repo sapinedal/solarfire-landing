@@ -1,17 +1,13 @@
 ---
 // Navbar.astro
 import { Image } from "astro:assets";
-import logoImage from "../assets/logo-solar-fire.png";
-import { whatsappLink } from "../data/products";
+import { getPagina } from "../lib/contenido";
+import { whatsappLink } from "../lib/whatsapp";
 
-const links = [
-  { href: "#productos", label: "Productos" },
-  { href: "#aromas", label: "Limpia Pisos" },
-  { href: "#demostraciones", label: "Línea RUDO" },
-  { href: "#nosotros", label: "Nosotros" },
-  { href: "#contacto", label: "Contacto" },
-];
-const quoteHref = whatsappLink("Hola Solar Fire, vengo de la página web y quiero cotizar productos.");
+const ajustes = await getPagina("ajustes");
+const { links, ctaLabel, ctaMessage } = await getPagina("navegacion");
+const logoImage = ajustes.logo;
+const quoteHref = whatsappLink(ajustes.whatsappNumber, ctaMessage);
 ---
 
 <header id="main-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
@@ -21,8 +17,8 @@ const quoteHref = whatsappLink("Hola Solar Fire, vengo de la página web y quier
       class="mt-4 flex items-center justify-between rounded-2xl px-4 sm:px-6 py-3 bg-white/85 backdrop-blur-md border border-cream-dark transition-shadow duration-300"
       aria-label="Principal"
     >
-      <a href="#inicio" class="flex items-center shrink-0" aria-label="Solar Fire, ir al inicio">
-        <Image src={logoImage} alt="Solar Fire" width={160} class="h-10 sm:h-11 w-auto" loading="eager" />
+      <a href="#inicio" class="flex items-center shrink-0" aria-label={`${ajustes.companyName}, ir al inicio`}>
+        <Image src={logoImage} alt={ajustes.companyName} width={160} class="h-10 sm:h-11 w-auto" loading="eager" />
       </a>
 
       <div class="hidden lg:flex items-center gap-1">
@@ -43,7 +39,7 @@ const quoteHref = whatsappLink("Hola Solar Fire, vengo de la página web y quier
           rel="noopener noreferrer"
           class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-red hover:bg-brand-red-dark text-white text-sm font-semibold transition-colors"
         >
-          Cotizar ahora
+          {ctaLabel}
         </a>
         <button
           id="mobile-menu-btn"
@@ -76,7 +72,7 @@ const quoteHref = whatsappLink("Hola Solar Fire, vengo de la página web y quier
           rel="noopener noreferrer"
           class="mobile-link mt-2 inline-flex justify-center px-5 py-3 rounded-xl bg-brand-red text-white font-semibold"
         >
-          Cotizar ahora
+          {ctaLabel}
         </a>
       </div>
     </div>

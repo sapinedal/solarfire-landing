@@ -1,0 +1,36 @@
+name: "Limpia Pisos Desinfectante 3 en 1"
+order: 10
+tagline: "Limpia, desinfecta y da brillo con fragancia de larga duración."
+categories:
+  - "Hogar"
+  - "Desinfección"
+images:
+  - image: ../../assets/productos/limpia-pisos-desinfectante/limpia-pisos-citronela.webp
+    alt: "Limpia Pisos Solar Fire aroma citronela"
+  - image: ../../assets/productos/limpia-pisos-desinfectante/limpia-pisos-brisa-fresca.webp
+    alt: "Limpia Pisos Solar Fire aroma brisa fresca"
+  - image: ../../assets/productos/limpia-pisos-desinfectante/limpia-pisos-lavanda.webp
+    alt: "Limpia Pisos Solar Fire aroma lavanda"
+  - image: ../../assets/productos/limpia-pisos-desinfectante/limpia-pisos-pinol.webp
+    alt: "Limpia Pisos Solar Fire aroma pinol"
+description:
+  - "Limpiador de pisos de alto desempeño formulado para limpiar, desinfectar y realzar el brillo de las superficies. Su fórmula contiene amonio cuaternario de quinta generación, reconocido por su eficaz acción desinfectante."
+  - "Además de remover la suciedad cotidiana, proporciona un brillo progresivo con el uso frecuente. Su fórmula biodegradable combina eficiencia con un menor impacto ambiental."
+applications:
+  - "Pisos cerámicos y porcelanatos"
+  - "Baños y sanitarios"
+  - "Cocinas y áreas de preparación"
+  - "Oficinas y áreas comunes"
+  - "Instituciones educativas"
+  - "Comercios y establecimientos"
+variantsLabel: "Aromas disponibles"
+variants:
+  - "Citronela"
+  - "Pinol"
+  - "Lavanda"
+  - "Floral"
+  - "Brisa Fresca"
+  - "Canela"
+  - "Fusión"
+  - "Talco"
+quote: "Limpieza, desinfección y frescura en cada aplicación."

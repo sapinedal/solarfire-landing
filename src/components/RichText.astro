@@ -1,0 +1,10 @@
+---
+// Texto plano del panel con soporte mínimo para **negrita**.
+interface Props {
+  text: string;
+  strongClass?: string;
+}
+const { text, strongClass = "font-semibold text-ink" } = Astro.props;
+const parts = text.split(/\*\*(.+?)\*\*/g);
+---
+{parts.map((part, i) => (i % 2 === 1 ? <strong class={strongClass}>{part}</strong> : part))}

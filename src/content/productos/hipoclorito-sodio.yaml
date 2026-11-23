@@ -1,0 +1,26 @@
+name: "Hipoclorito de Sodio"
+order: 60
+tagline: "Desinfección, saneamiento y tratamiento de aguas."
+categories:
+  - "Desinfección"
+  - "Industrial"
+images:
+  - image: ../../assets/productos/hipoclorito-sodio/hipoclorito-1.webp
+    alt: "Hipoclorito de sodio Solar Fire al 5,25 %"
+  - image: ../../assets/productos/hipoclorito-sodio/hipoclorito-2.webp
+    alt: "Hipoclorito de sodio Solar Fire al 15 %"
+description:
+  - "Hipoclorito de sodio de alta calidad para desinfección, saneamiento y tratamiento de aguas. Gracias a su alto poder oxidante se usa en control microbiológico, desodorización y blanqueamiento."
+  - "Ideal para industrias, instituciones, plantas de tratamiento, empresas de mantenimiento y lavanderías."
+applications:
+  - "Tratamiento y desinfección de aguas"
+  - "Piscinas y plantas de tratamiento"
+  - "Procesos industriales"
+  - "Desinfección de superficies"
+  - "Lavado y blanqueamiento"
+variantsLabel: "Concentraciones"
+variants:
+  - "5,25 %"
+  - "13 %"
+  - "15 %"
+quote: "Potencia, desinfección y confianza en cada aplicación."

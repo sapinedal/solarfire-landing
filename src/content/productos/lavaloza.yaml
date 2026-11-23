@@ -1,0 +1,33 @@
+name: "Lavaloza Líquido Neutro"
+order: 30
+tagline: "Alta espuma, pH neutro y glicerina que cuida tus manos."
+categories:
+  - "Cocina"
+  - "Hogar"
+images:
+  - image: ../../assets/productos/lavaloza/lavaloza-litro.webp
+    alt: "Lavaloza Solar Fire presentación litro"
+  - image: ../../assets/productos/lavaloza/lavaloza-galon.webp
+    alt: "Lavaloza Solar Fire presentación galón"
+  - image: ../../assets/productos/lavaloza/lavaloza-bidon.webp
+    alt: "Lavaloza Solar Fire presentación bidón 20 litros"
+description:
+  - "Lavaloza líquido de alta espuma, disponible con o sin fragancia, formulado con pH neutro. Su poderosa acción desengrasante elimina residuos de alimentos y deja vajillas y utensilios limpios y brillantes."
+  - "Contiene agentes humectantes y glicerina que ayudan a proteger y suavizar las manos durante el uso frecuente."
+benefits:
+  - "Alto poder desengrasante"
+  - "Espuma abundante y de larga duración"
+  - "pH neutro, suave con la piel"
+  - "Con agentes humectantes y glicerina"
+  - "Disponible con o sin aroma"
+applications:
+  - "Platos, vasos y cubiertos"
+  - "Ollas, sartenes y utensilios"
+  - "Mesones y superficies lavables"
+  - "Restaurantes, cafeterías y hoteles"
+variantsLabel: "Presentaciones"
+variants:
+  - "Litro · 1.000 ml"
+  - "Galón · 3.800 ml"
+  - "Bidón · 20.000 ml"
+quote: "Máxima limpieza, espuma duradera y protección para tus manos."

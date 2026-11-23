@@ -2,21 +2,34 @@
 // ProductSection.astro
 import ProductCard from "./ProductCard.astro";
 import ProductDialog from "./ProductDialog.astro";
-import { products, categories } from "../data/products";
+import RichText from "./RichText.astro";
+import { getPagina, getProductos } from "../lib/contenido";
+import { CATEGORIAS } from "../lib/categorias";
 
-const filters = ["Todos", ...categories];
+const products = await getProductos();
+const catalogo = await getPagina("catalogo");
+const ajustes = await getPagina("ajustes");
+const quote = {
+  number: ajustes.whatsappNumber,
+  plantilla: { intro: ajustes.quoteIntro, outro: ajustes.quoteOutro },
+};
+
+// Solo se muestran las categorías que tienen al menos un producto.
+const usadas = CATEGORIAS.filter((c) => products.some((p) => p.categories.includes(c)));
+const ALL = "__todos__";
+const filters = [{ value: ALL, label: catalogo.allLabel }, ...usadas.map((c) => ({ value: c, label: c }))];
 ---
 
 <section id="productos" class="py-20 md:py-28 bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="reveal flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-12">
       <div class="max-w-2xl">
-        <p class="eyebrow">Catálogo</p>
+        <p class="eyebrow">{catalogo.eyebrow}</p>
         <h2 class="mt-3 font-display font-extrabold text-4xl md:text-5xl text-brand-blue tracking-tight leading-[1.05]">
-          Productos para cada rincón
+          {catalogo.title}
         </h2>
         <p class="mt-4 text-lg text-slate-600 leading-relaxed">
-          Fórmulas concentradas para el hogar, la cocina y la industria, disponibles desde litro hasta bidón de 20 litros.
+          <RichText text={catalogo.description} />
         </p>
       </div>
 
@@ -25,21 +38,21 @@ const filters = ["Todos", ...categories];
           <button
             type="button"
             class="filter-btn px-5 py-2.5 rounded-full text-sm font-semibold border transition-colors aria-pressed:bg-brand-blue aria-pressed:text-white aria-pressed:border-brand-blue bg-white text-slate-600 border-cream-dark hover:border-brand-blue/40"
-            data-filter={cat}
+            data-filter={cat.value}
             aria-pressed={idx === 0 ? "true" : "false"}
           >
-            {cat}
+            {cat.label}
           </button>
         ))}
       </div>
     </div>
 
     <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-      {products.map((product) => <ProductCard product={product} />)}
+      {products.map((product) => <ProductCard product={product} quote={quote} />)}
     </div>
   </div>
 
-  {products.map((product) => <ProductDialog product={product} />)}
+  {products.map((product) => <ProductDialog product={product} quote={quote} disclaimer={catalogo.disclaimer} />)}
 </section>
 
 <script>
@@ -53,7 +66,7 @@ const filters = ["Todos", ...categories];
       filterBtns.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
       cards.forEach((card) => {
         const cats = card.dataset.categories?.split("|") ?? [];
-        card.hidden = filter !== "Todos" && !cats.includes(filter ?? "");
+        card.hidden = filter !== "__todos__" && !cats.includes(filter ?? "");
       });
     });
   });
